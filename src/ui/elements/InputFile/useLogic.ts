@@ -1,0 +1,49 @@
+import { useEffect, useState } from "react"
+import { IInputFileProps } from "./InputFile"
+
+const useLogic = (propsParam: IInputFileProps) => {
+  const { onChange, ...props } = propsParam
+  const [fileName, setFileName] = useState<string | null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const [files, setFiles] = useState<FileList | File[]>([])
+
+  useEffect(() => {
+    if (file && onChange && !props.multiple) {
+      onChange(file)
+    }
+  }, [file, onChange, props.multiple])
+
+  useEffect(() => {
+    if (files && onChange && props.multiple) {
+      onChange(files)
+    }
+  }, [files, onChange, props.multiple])
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      if (!props.multiple) {
+        setFileName(e.target.files[0].name)
+        setFile(e.target.files[0])
+      } else {
+        setFiles(e.target.files)
+      }
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { label, helperText, error, color, required, ...inputProps } = propsParam
+
+  return {
+    // --- state ---
+    params: propsParam,
+    fileName,
+    files,
+    inputProps,
+
+    // --- function ---
+    setFiles,
+    handleChangeInput,
+  }
+}
+
+export default useLogic

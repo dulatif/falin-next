@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  images: {
+    domains: ["logospng.org", "cdn.iconscout.com", "falin.netlify.app"],
+  },
 };
 
 export default nextConfig;
