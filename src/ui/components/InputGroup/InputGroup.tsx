@@ -1,21 +1,56 @@
-import { FormControl, FormHelperText, Input, InputLabel, InputProps } from "@mui/material"
-import React, { useId } from "react"
+import {
+  FormControl,
+  FormControlProps,
+  FormHelperText,
+  Input,
+  InputLabel,
+  InputProps,
+} from "@mui/material";
+import React, { PropsWithChildren, useId } from "react";
 
 export interface IInputGroup extends InputProps {
-  label: string
-  helperText?: string
+  label: string;
+  helperText?: string;
 }
 const InputGroup: React.FC<IInputGroup> = React.forwardRef((props, ref) => {
-  const id = useId()
-  const { label, helperText, ...inputProps } = props
+  const id = useId();
+  const { label, helperText, ...inputProps } = props;
   return (
-    <FormControl fullWidth required={props.required} error={props.error} disabled={props.disabled}>
+    <FormControl
+      fullWidth
+      required={props.required}
+      error={props.error}
+      disabled={props.disabled}
+    >
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <Input id={id} {...inputProps} ref={ref} />
       <FormHelperText>{helperText}</FormHelperText>
     </FormControl>
-  )
-})
+  );
+});
 
-InputGroup.displayName = "InputGroup"
-export default InputGroup
+export interface IFormGroup extends FormControlProps, PropsWithChildren {
+  label: string;
+  helperText?: string;
+}
+const FormGroup: React.FC<IFormGroup> = React.forwardRef((props) => {
+  const { label, helperText, children, ...formControlProps } = props;
+  return (
+    <FormControl
+      fullWidth
+      required={props.required}
+      error={props.error}
+      disabled={props.disabled}
+      {...formControlProps}
+    >
+      <InputLabel>{label}</InputLabel>
+      {children}
+      <FormHelperText>{helperText}</FormHelperText>
+    </FormControl>
+  );
+});
+
+InputGroup.displayName = "InputGroup";
+FormGroup.displayName = "FormGroup";
+export { FormGroup };
+export default InputGroup;

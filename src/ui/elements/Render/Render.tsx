@@ -1,11 +1,12 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren, ReactNode } from "react";
 
 interface IRenderProps extends PropsWithChildren {
-  in: boolean
+  in: boolean;
+  fallback?: ReactNode;
 }
 const Render: React.FC<IRenderProps> = (props) => {
-  if (props.in) return <>{props.children}</>
-  return <></>
-}
+  if (props.in) return <>{props.children}</>;
+  return props.fallback;
+};
 
-export default Render
+export default Render;

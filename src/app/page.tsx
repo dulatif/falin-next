@@ -1,110 +1,102 @@
 "use client";
-import Image from "next/image";
-import { Box, Stack, SxProps, Button, Typography } from "@mui/material";
-import { GitBranch, FileSearch } from "phosphor-react";
-import Link from "next/link";
-import { primary } from "@/theme/ts/colors";
 
-const styles: { container: SxProps; icon: SxProps; button: SxProps } = {
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    gap: "100px",
-    justifyContent: "center",
-    alignItems: "center",
-    background: `linear-gradient(180deg, #ffffff 45.16%, ${primary[100]} 131.72%)`,
-  },
-  icon: {
-    overflow: "hidden",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "160px",
-    height: "160px",
-    "& img": { height: "100%" },
-  },
-  button: {
-    width: "200px",
-  },
-};
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, GithubLogo } from "phosphor-react";
 
 export default function Home() {
+  const theme = useTheme();
+
   return (
-    <Box sx={styles.container}>
-      <Stack direction="row" spacing={10}>
-        <Box
-          sx={{
-            ...styles.icon,
-          }}
-        >
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background: `linear-gradient(45deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Stack spacing={4} alignItems="center" textAlign="center">
           <Image
-            src="https://logospng.org/download/vite-js/vite-js-4096-logo.png"
-            alt="Vite.js Logo"
-            width={160}
-            height={160}
-            style={{ height: "100%" }}
+            src="/favicon.ico"
+            width={100}
+            height={100}
+            alt="Logo"
+            style={{
+              filter: "drop-shadow(4px 12px 24px rgba(0, 82, 233, 0.32))",
+            }}
           />
-        </Box>
-        <Box
-          sx={{
-            borderRadius: "50%",
-            ...styles.icon,
-          }}
-        >
-          <Image
-            src="https://cdn.iconscout.com/icon/free/png-256/free-react-1-282599.png?f=webp"
-            alt="React Logo"
-            width={160}
-            height={160}
-            style={{ height: "100%" }}
-          />
-        </Box>
-        <Box
-          sx={{
-            ...styles.icon,
-          }}
-        >
-          <Image
-            src="https://falin.netlify.app/favicon.svg"
-            alt="Falin Logo"
-            width={160}
-            height={160}
-            style={{ height: "100%" }}
-          />
-        </Box>
-      </Stack>
-      <Box>
-        <Typography variant="h3" fontWeight={"semiBold"}>
-          Falin UI
-        </Typography>
-      </Box>
-      <Stack direction="row" spacing={4}>
-        <Link href="/design-system/home">
-          <Button
-            size="xl"
-            sx={styles.button}
-            startIcon={<FileSearch size={26} weight="regular" />}
+
+          <Typography variant="h2" component="h1" fontWeight="bold">
+            Falin Next TS
+          </Typography>
+
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            fontWeight={"regular"}
+            sx={{ maxWidth: 600 }}
           >
-            Documentation
-          </Button>
-        </Link>
-        <a
-          href="https://github.com/BJ-stack-art/falin"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Button
-            size="xl"
-            sx={styles.button}
-            color="inherit"
-            startIcon={<GitBranch size={26} weight="regular" />}
+            A powerful, clean, and opinionated starter template with Next.js 15,
+            Material UI v6, React Query, and TypeScript.
+          </Typography>
+
+          <Stack direction="row" spacing={2} pt={4}>
+            <Link href="/design-system/dashboard" passHref>
+              <Button variant="contained" size="lg" endIcon={<ArrowRight />}>
+                Go to Dashboard
+              </Button>
+            </Link>
+            <Button
+              variant="text"
+              size="lg"
+              color="inherit"
+              startIcon={<GithubLogo />}
+              onClick={() => window.open("https://github.com/", "_blank")}
+            >
+              GitHub
+            </Button>
+          </Stack>
+
+          <Box
+            sx={{
+              mt: 8,
+              p: 3,
+              borderRadius: 2,
+              bgcolor: "background.paper",
+              border: `1px solid ${theme.palette.divider}`,
+              width: "100%",
+            }}
           >
-            Github
-          </Button>
-        </a>
-      </Stack>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={4}
+              justifyContent="space-around"
+            >
+              {[
+                { label: "Material UI v6", value: "Design System" },
+                { label: "TanStack Query", value: "Data Fetching" },
+                { label: "Zustand", value: "State Management" },
+                { label: "React Hook Form", value: "Forms" },
+              ].map((item) => (
+                <Box key={item.label}>
+                  <Typography variant="subtitle2" color="text.secondary">
+                    {item.value}
+                  </Typography>
+                  <Typography variant="h6" fontWeight="bold">
+                    {item.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
+          </Box>
+        </Stack>
+      </Container>
     </Box>
   );
 }
