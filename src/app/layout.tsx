@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import TanstackProvider from "@/providers/TanstackProvider";
-import "./globals.css";
+import "@/theme/css/colors.css";
+import "@/theme/css/globals.css";
 
 import ThemeRegistry from "@/providers/ThemeRegistry";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter-sans",
   subsets: ["latin"],
   display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Next.js MUI Boilerplate",
   description:
@@ -29,16 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <title>{String(metadata.title)}</title>
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TanstackProvider>
-          <ThemeRegistry>{children}</ThemeRegistry>
-        </TanstackProvider>
-      </body>
-    </html>
+    <TanstackProvider>
+      <ThemeRegistry>
+        <html lang="en">
+          <head>
+            <meta charSet="utf-8" />
+            <title>{String(metadata.title)}</title>
+          </head>
+          <body className={`${inter.variable}`}>{children}</body>
+        </html>
+      </ThemeRegistry>
+    </TanstackProvider>
   );
 }

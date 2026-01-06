@@ -11,14 +11,21 @@ import {
   Input,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { login } from "@/utils/next-auth";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    axios.get("/api/hello").then((res) => {
+      console.log(res.data);
+    });
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +49,7 @@ export default function LoginPage() {
       <Card sx={{ width: "100%" }}>
         <CardContent>
           <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Sign in
+            Sign in testa
           </Typography>
           <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
             <FormControl>
@@ -61,6 +68,7 @@ export default function LoginPage() {
               type="submit"
               fullWidth
               variant="contained"
+              color="inherit"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In

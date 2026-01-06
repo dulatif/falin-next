@@ -44,7 +44,7 @@ const LoginForm = () => {
 
   const onSubmit = handleSubmit((data: LoginFormValues) => {
     loginMutation.mutate(data, {
-      onSuccess: (response) => {
+      onSuccess: (response: any) => {
         login(response.api_token).then(() => {
           if (!response.user.email_verified) {
             router.push("/admin/dashboard");

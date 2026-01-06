@@ -27,6 +27,12 @@
     },
     "javascript.format.enable": false,
     "typescript.format.enable": false,
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "biomejs.biome"
+    },
       "files.exclude": {
       "**/node_modules": true,
       "**/.next": true,
