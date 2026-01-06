@@ -1,4 +1,4 @@
-import { SxProps } from "@mui/material"
+import { SxProps } from "@mui/material";
 
 export const styles: { box: SxProps; label: SxProps; radio: SxProps } = {
   box: { marginLeft: "7px" },
@@ -17,7 +17,7 @@ export const styles: { box: SxProps; label: SxProps; radio: SxProps } = {
       pointerEvents: "none",
     },
   },
-}
+};
 
 export const getStyles = (align: "center" | "top" | undefined) => {
   return {
@@ -26,5 +26,5 @@ export const getStyles = (align: "center" | "top" | undefined) => {
       marginTop: align === "center" ? "0px" : "4px",
     },
     ...styles.label,
-  }
-}
+  };
+};

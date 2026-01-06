@@ -44,7 +44,7 @@ const InputFile: React.FC<IInputFileProps> = React.forwardRef(
         </FormControl>
       </Box>
     );
-  }
+  },
 );
 
 InputFile.displayName = "InputFile";

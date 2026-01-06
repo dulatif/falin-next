@@ -1,0 +1,11 @@
+@use "@/theme/scss/colors.scss" as *;
+@use "@/theme/scss/shadows.scss" as *;
+@use "@/theme/scss/typography.scss" as *;
+@use "@/theme/scss/spacing.scss" as *;
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

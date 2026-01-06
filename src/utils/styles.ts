@@ -5,7 +5,7 @@ export const appendStyle = (styleProps: SxProps) => {
 };
 
 export const combineClasses = (
-  classes: (string | boolean | undefined)[]
+  classes: (string | boolean | undefined)[],
 ): string => {
   return classes.join(" ");
 };

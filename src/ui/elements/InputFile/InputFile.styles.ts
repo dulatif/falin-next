@@ -1,19 +1,20 @@
-import { SxProps } from "@mui/material"
-import { danger, neutral } from "@/theme/ts/colors"
+import { SxProps } from "@mui/material";
+import { danger, neutral } from "@/theme/ts/colors";
 
 interface IStyle {
-  root: SxProps
-  error: SxProps
-  disabled: SxProps
-  label: SxProps
-  btn: SxProps
+  root: SxProps;
+  error: SxProps;
+  disabled: SxProps;
+  label: SxProps;
+  btn: SxProps;
 }
 export const styles: IStyle = {
   root: {
     backgroundColor: "#fff",
     borderRadius: "8px",
     border: `1px solid ${neutral[300]}`,
-    boxShadow: "0px 2px 2px rgba(218, 227, 225, 0.1), inset 0px -1px 1px rgba(218, 227, 225, 0.15)",
+    boxShadow:
+      "0px 2px 2px rgba(218, 227, 225, 0.1), inset 0px -1px 1px rgba(218, 227, 225, 0.15)",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -42,4 +43,4 @@ export const styles: IStyle = {
     color: "#fff",
     borderRadius: "0px",
   },
-}
+};

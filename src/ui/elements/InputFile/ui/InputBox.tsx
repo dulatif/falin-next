@@ -1,14 +1,14 @@
-import { appendStyle } from "@/utils/styles"
-import { Box, Button } from "@mui/material"
-import React, { useRef } from "react"
-import { styles } from "../InputFile.styles"
-import useLogic from "../useLogic"
-import Placeholder from "./Placeholder"
-import { IInputFileProps } from "../InputFile"
+import { Box, Button } from "@mui/material";
+import React, { useRef } from "react";
+import { appendStyle } from "@/utils/styles";
+import { IInputFileProps } from "../InputFile";
+import { styles } from "../InputFile.styles";
+import useLogic from "../useLogic";
+import Placeholder from "./Placeholder";
 
 interface IInputBoxProps {
-  inputFileProps: IInputFileProps
-  id: string
+  inputFileProps: IInputFileProps;
+  id: string;
 }
 const InputBox: React.FC<IInputBoxProps> = ({ inputFileProps, id }) => {
   const {
@@ -16,8 +16,8 @@ const InputBox: React.FC<IInputBoxProps> = ({ inputFileProps, id }) => {
     handleChangeInput,
     params: { disabled, error, placeholder, color, multiple },
     inputProps,
-  } = useLogic(inputFileProps)
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  } = useLogic(inputFileProps);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <>
@@ -31,15 +31,30 @@ const InputBox: React.FC<IInputBoxProps> = ({ inputFileProps, id }) => {
         onChange={handleChangeInput}
       />
       <label htmlFor={id}>
-        <Box sx={[...appendStyle(styles.root), error && styles.error, disabled && styles.disabled]}>
-          <Placeholder multiple={multiple} fileName={fileName} placeholder={placeholder} />
-          <Button color={color} sx={styles.btn} disabled={disabled} onClick={() => inputRef?.current?.click()}>
+        <Box
+          sx={[
+            ...appendStyle(styles.root),
+            error && styles.error,
+            disabled && styles.disabled,
+          ]}
+        >
+          <Placeholder
+            multiple={multiple}
+            fileName={fileName}
+            placeholder={placeholder}
+          />
+          <Button
+            color={color}
+            sx={styles.btn}
+            disabled={disabled}
+            onClick={() => inputRef?.current?.click()}
+          >
             Browse file
           </Button>
         </Box>
       </label>
     </>
-  )
-}
+  );
+};
 
-export default InputBox
+export default InputBox;

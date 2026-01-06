@@ -7,6 +7,7 @@ import { Dayjs } from "dayjs";
 import { CalendarBlank } from "phosphor-react";
 import React, { useId } from "react";
 import "./InputDate.module.scss";
+import styles from "./InputDate.module.scss";
 
 const slots = {
   openPickerIcon: CalendarBlank,
@@ -21,7 +22,10 @@ const slotProps = {
 };
 export interface IInputDateProps {
   value?: Dayjs | null;
-  onChange?: (value: Dayjs | null, context: FieldChangeHandlerContext<any>) => void;
+  onChange?: (
+    value: Dayjs | null,
+    context: FieldChangeHandlerContext<any>,
+  ) => void;
   disabled?: boolean;
   label: string;
   helperText?: string;
@@ -40,6 +44,7 @@ const InputDate: React.FC<IInputDateProps> = React.forwardRef((props, ref) => {
         required={required}
         error={error}
         disabled={props.disabled}
+        className={styles.DatePicker}
       >
         <InputLabel>{label}</InputLabel>
         <LocalizationProvider dateAdapter={AdapterDayjs}>

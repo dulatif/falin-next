@@ -1,8 +1,8 @@
-import { Chip, Stack } from "@mui/material"
+import { Chip, Stack } from "@mui/material";
 
 export interface IListFilesProps {
-  files: FileList | File[]
-  setFiles: React.Dispatch<React.SetStateAction<FileList | File[]>>
+  files: FileList | File[];
+  setFiles: React.Dispatch<React.SetStateAction<FileList | File[]>>;
 }
 const ListFiles: React.FC<IListFilesProps> = ({ files, setFiles }) => {
   return (
@@ -20,11 +20,15 @@ const ListFiles: React.FC<IListFilesProps> = ({ files, setFiles }) => {
           key={item.name}
           size="small"
           label={item.name}
-          onDelete={() => setFiles(Array.from(files).filter((file) => file.name !== item.name))}
+          onDelete={() =>
+            setFiles(
+              Array.from(files).filter((file) => file.name !== item.name),
+            )
+          }
         />
       ))}
     </Stack>
-  )
-}
+  );
+};
 
-export default ListFiles
+export default ListFiles;

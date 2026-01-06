@@ -1,10 +1,10 @@
-import { combineClasses } from "@/utils/styles";
 import { Box, Button, Typography } from "@mui/material";
 import { Bug, CopySimple } from "phosphor-react";
 import React, { useEffect, useState } from "react";
-import Modal from "./Modal";
+import { combineClasses } from "@/utils/styles";
 import classes from "../styles/ModalError.module.scss";
 import { syntaxHighlight } from "../utils/syntaxHighlight";
+import Modal from "./Modal";
 
 export interface IModalErrorProps {
   open: boolean;
@@ -62,7 +62,7 @@ const ModalError: React.FC<IModalErrorProps> = ({ open, onClose, error }) => {
             className={combineClasses([classes.Body, classes.Payload])}
             dangerouslySetInnerHTML={{
               __html: syntaxHighlight(
-                JSON.stringify(JSON.parse(payload), null, 4)
+                JSON.stringify(JSON.parse(payload), null, 4),
               ),
             }}
           ></pre>

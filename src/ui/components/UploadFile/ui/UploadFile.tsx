@@ -1,18 +1,44 @@
-import { neutral } from "@/theme/ts/colors"
-import { Box, Button, Stack, SxProps, Typography } from "@mui/material"
-import { CloudArrowUp, Trash } from "phosphor-react"
-import React, { useEffect } from "react"
-import useLogic from "../utils/useLogic"
-import { getStyles } from "../utils/getStyles"
+import {
+  Box,
+  Button,
+  Collapse,
+  LinearProgress,
+  Stack,
+  SxProps,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { CloudArrowUp, Trash } from "phosphor-react";
+import React, { useEffect } from "react";
+import { getColors } from "@/theme/ts/colors";
+import { getStyles } from "../utils/getStyles";
+import useLogic from "../utils/useLogic";
 
 export interface IUploadFileProps {
-  disabled?: boolean
-  onChange?: (file: File | null) => void
-  placeholder?: string
-  value?: File
+  disabled?: boolean;
+  onChange?: (file: File | null) => void;
+  placeholder?: string;
+  value?: File;
+  accept?: string;
+  progress?: number;
+  height?: number;
 }
-const UploadFile: React.FC<IUploadFileProps> = React.forwardRef(
-  ({ disabled = false, onChange, placeholder, value }, ref) => {
+const UploadFile = React.forwardRef<HTMLDivElement, IUploadFileProps>(
+  (
+    {
+      disabled = false,
+      onChange,
+      placeholder,
+      value,
+      accept = "image/*",
+      progress,
+      height = 125,
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const colors = getColors(theme.palette.mode);
+
     const {
       fileInput,
       imgSources,
@@ -26,28 +52,32 @@ const UploadFile: React.FC<IUploadFileProps> = React.forwardRef(
       handleUpload,
       removeFile,
       reset,
-    } = useLogic(onChange)
+    } = useLogic(onChange);
 
     useEffect(() => {
-      if (value === undefined) reset()
-    }, [value, reset])
+      if (value === undefined) reset();
+    }, [value, reset]);
 
     const styles: {
-      root: SxProps
-      boxIconCloud: SxProps
-      label: SxProps
-      fileName: SxProps
-      stackBtn: SxProps
-    } = getStyles(disabled, onDropZone, file, isImage, imgSources)
+      root: SxProps;
+      boxIconCloud: SxProps;
+      label: SxProps;
+      fileName: SxProps;
+      stackBtn: SxProps;
+    } = getStyles(disabled, onDropZone, file, isImage, imgSources, colors);
 
     const BoxImageEmpty = () => (
       <>
-        <Box sx={{ textAlign: "center", color: neutral[700] }}>
+        <Box sx={{ textAlign: "center", color: colors.neutral[700] }}>
           <Box sx={styles.boxIconCloud}>
             <CloudArrowUp weight="bold" size={20} />
           </Box>
           <Typography variant="body1">
-            <Typography component="span" sx={styles.label} onClick={handleUpload}>
+            <Typography
+              component="span"
+              sx={styles.label}
+              onClick={handleUpload}
+            >
               Click to upload
             </Typography>{" "}
             or drag and drop
@@ -55,7 +85,7 @@ const UploadFile: React.FC<IUploadFileProps> = React.forwardRef(
           {placeholder && <Typography>{placeholder}</Typography>}
         </Box>
       </>
-    )
+    );
 
     const BoxImageExists = () => (
       <>
@@ -65,19 +95,33 @@ const UploadFile: React.FC<IUploadFileProps> = React.forwardRef(
           </Typography>
         )}
         <Stack direction={"row"} spacing={2} sx={styles.stackBtn}>
-          <Button variant="contained" onClick={handleUpload}>
+          <Button
+            variant="contained"
+            onClick={handleUpload}
+            disabled={typeof progress === "number"}
+          >
             Change File
           </Button>
-          <Button data-shape="icon" color="error" onClick={removeFile}>
+          <Button
+            data-shape="icon"
+            color="error"
+            onClick={removeFile}
+            disabled={typeof progress === "number"}
+          >
             <Trash weight="bold" size={26} />
           </Button>
         </Stack>
+        {typeof progress === "number" && (
+          <Box sx={{ width: "100%", mt: 2 }}>
+            <LinearProgress variant="determinate" value={progress} />
+          </Box>
+        )}
       </>
-    )
+    );
 
     return (
       <Box
-        sx={styles.root}
+        sx={{ ...styles.root, height }}
         onDrop={handleDrop}
         onDragOver={handleDrag}
         onDragEnter={() => setOnDropZone(true)}
@@ -89,15 +133,43 @@ const UploadFile: React.FC<IUploadFileProps> = React.forwardRef(
           type="file"
           ref={fileInput}
           style={{ display: "none" }}
+          accept={accept}
           onChange={handleChangeInput}
         />
-        <Stack direction="column" sx={{ height: "100%" }} justifyContent={"center"} alignItems={"center"} spacing={3}>
+        <Stack
+          direction="column"
+          sx={{ height: "100%" }}
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={3}
+        >
           {!imgSources ? <BoxImageEmpty /> : <BoxImageExists />}
         </Stack>
       </Box>
-    )
-  }
-)
+    );
+  },
+);
 
-UploadFile.displayName = "UploadFile"
-export default UploadFile
+const Progress = ({ progress }: { progress?: number }) => {
+  if (typeof progress !== "number") return null;
+  return (
+    <Collapse in={typeof progress === "number"} timeout={100}>
+      <LinearProgress
+        variant="determinate"
+        value={progress}
+        color="info"
+        sx={{ height: "4px", mt: 1 }}
+      />
+    </Collapse>
+  );
+};
+type UploadComponentType = React.ForwardRefExoticComponent<
+  IUploadFileProps & React.RefAttributes<HTMLDivElement>
+> & {
+  Progress: typeof Progress;
+};
+
+UploadFile.displayName = "UploadFile";
+(UploadFile as UploadComponentType).Progress = Progress;
+
+export default UploadFile as UploadComponentType;

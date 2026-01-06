@@ -1,3 +1,8 @@
+@use "@/theme/scss/colors.scss" as *;
+@use "@/theme/scss/shadows.scss" as *;
+@use "@/theme/scss/typography.scss" as *;
+@use "@/theme/scss/spacing.scss" as *;
+
 .Root {
   background-color: $neutral-100;
   min-height: 100vh;
