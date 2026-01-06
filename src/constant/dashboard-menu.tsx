@@ -9,7 +9,6 @@ import {
   House,
   Info,
   Link,
-  List,
   MapTrifold,
   Palette,
   Pill,
