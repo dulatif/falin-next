@@ -37,7 +37,7 @@ export default function LoginPage() {
       "1|mocked_token_hash_value_that_is_long_enough_for_validation";
 
     await login(fakeToken);
-    router.push("/admin/dashboard");
+    router.push("/design-system/dashboard");
   };
 
   return (
@@ -49,7 +49,7 @@ export default function LoginPage() {
       <Card sx={{ width: "100%" }}>
         <CardContent>
           <Typography component="h1" variant="h5" align="center" gutterBottom>
-            Sign in testa
+            Sign in
           </Typography>
           <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
             <FormControl>
@@ -68,7 +68,7 @@ export default function LoginPage() {
               type="submit"
               fullWidth
               variant="contained"
-              color="inherit"
+              color="primary"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In

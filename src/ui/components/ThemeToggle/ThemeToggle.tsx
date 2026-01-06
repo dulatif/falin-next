@@ -16,18 +16,18 @@ export const ThemeToggle = () => {
         onClick={toggleTheme}
         variant="text"
         color="inherit"
-        size="lg"
+        size="md"
         sx={{
           svg: {
-            width: "24px !important",
-            height: "24px !important",
+            width: "20px !important",
+            height: "20px !important",
           },
         }}
       >
         {mode === "light" ? (
-          <Moon weight="duotone" size={24} />
+          <Moon weight="duotone" size={20} />
         ) : (
-          <Sun weight="duotone" size={24} />
+          <Sun weight="duotone" size={20} />
         )}
       </Button>
     </Tooltip>

@@ -11,24 +11,17 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { ApiResponseError } from "@/api";
-import { useLogin } from "@/hooks/useAuthMutation";
 import type { LoginFormValues } from "@/interfaces/auth";
 import { loginSchema } from "@/interfaces/schemas";
 import InputGroup from "@/ui/components/InputGroup";
-import { login } from "@/utils/next-auth"; // ✅ Use new auth file
 
 const LoginForm = () => {
-  const loginMutation = useLogin();
   const [showPassword, setShowPassword] = React.useState(false);
-  const router = useRouter();
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -43,21 +36,7 @@ const LoginForm = () => {
   };
 
   const onSubmit = handleSubmit((data: LoginFormValues) => {
-    loginMutation.mutate(data, {
-      onSuccess: (response: any) => {
-        login(response.api_token).then(() => {
-          if (!response.user.email_verified) {
-            router.push("/admin/dashboard");
-            return;
-          }
-          window.location.href = "/";
-        });
-      },
-      onError: (err: unknown) => {
-        const error = err as ApiResponseError;
-        setError("email", { message: error.message || "" });
-      },
-    });
+    console.log(data);
   });
 
   return (

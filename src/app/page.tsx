@@ -47,7 +47,7 @@ export default function Home() {
           </Typography>
 
           <Stack direction="row" spacing={2} pt={4}>
-            <Link href="/admin/dashboard" passHref>
+            <Link href="/design-system/dashboard" passHref>
               <Button
                 variant="contained"
                 size="lg"

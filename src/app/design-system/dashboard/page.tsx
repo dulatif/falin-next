@@ -1,21 +1,12 @@
 "use client";
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import StatCard from "@/ui/components/StatCard";
 import DashboardLayout from "@/ui/layouts/Dashboard/DashboardLayout";
 
 export default function DashboardPage() {
   return (
     <DashboardLayout>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" fontWeight="bold">
-          Dashboard
-        </Typography>
-        <Typography color="text.secondary">
-          Welcome to the Next.js MUI Boilerplate Admin
-        </Typography>
-      </Box>
-
       <Grid container spacing={3}>
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <StatCard

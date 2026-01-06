@@ -203,8 +203,8 @@
   --danger-900: #fffbfa;
 
   /* Semantic Aliases for Dark Mode */
-  --bg-sidebar-start: var(--primary-25);
-  --bg-sidebar-end: var(--primary-50);
+  --bg-sidebar-start: var(--neutral-50);
+  --bg-sidebar-end: var(--neutral-25);
   --bg-sidebar: linear-gradient(
     90deg,
     var(--bg-sidebar-start) 0%,

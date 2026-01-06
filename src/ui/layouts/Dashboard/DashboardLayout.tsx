@@ -1,12 +1,37 @@
 "use client";
 
-import { Box, Button, Stack, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  MenuItem,
+  MenuList,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import classNames from "classnames";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { SignOut } from "phosphor-react";
-import { ReactNode } from "react";
-import dashboardMenu from "@/constant/dashboard-menu";
+import {
+  Bell,
+  DotsThreeOutlineVertical,
+  List,
+  SignOut,
+  UserCircle,
+} from "phosphor-react";
+import React, { ReactNode, useState } from "react";
+import dashboardMenu, {
+  MenuItem as DashboardMenuItem,
+  listComponents,
+  listCustomization,
+  listExtraUI,
+  listMenuForms,
+} from "@/constant/dashboard-menu";
+import { getColors } from "@/theme/ts/colors";
 import { ThemeToggle } from "@/ui/components/ThemeToggle";
+import { Render } from "@/ui/elements";
 import { logout } from "@/utils/next-auth";
 import classes from "./DashboardLayout.module.scss";
 
@@ -15,28 +40,46 @@ interface DashboardLayoutProps {
 }
 
 // MenuItems
-const MenuItems = () => {
+const MenuItems: React.FC<{ menus: DashboardMenuItem[] }> = ({ menus }) => {
   const pathname = usePathname();
 
-  return dashboardMenu.map((item) => (
-    <Link
-      key={item.path}
-      href={item.path}
-      className={`${classes.MenuItem} ${
-        pathname === item.path ? classes.Active : ""
-      }`}
-    >
-      <span className={classes.MenuIcon}>{item.icon}</span>
-      <span>{item.title}</span>
+  return menus.map((item) => (
+    <Link key={item.path} href={item.path}>
+      <MenuItem
+        className={`${classes.MenuItem} ${
+          pathname === item.path ? classes.Active : ""
+        }`}
+      >
+        <span className={classes.MenuIcon}>{item.icon}</span>
+        <Typography>{item.title}</Typography>
+      </MenuItem>
     </Link>
   ));
+};
+
+const MenuTitle: React.FC<{ title: string }> = ({ title }) => {
+  return (
+    <Typography
+      variant="body2"
+      fontWeight={"semiBold"}
+      mb={2}
+      mt={4}
+      className={classes.MenuTitle}
+      color="text.secondary"
+    >
+      {title}
+    </Typography>
+  );
 };
 
 // DashboardLayout
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const theme = useTheme();
+  const colors = getColors(theme.palette.mode);
   const menu = dashboardMenu.find((item) => item.path === pathname);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const handleLogout = async () => {
     const result = await logout();
@@ -47,41 +90,78 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className={classes.DashboardLayout}>
-      <Box component="aside" className={classes.Sidebar}>
-        <Box>
-          <Box className={classes.SidebarHeader}>
-            <div className={classes.Logo}>
-              <span>BOILERPLATE</span>
-            </div>
-          </Box>
-          <Box component="nav" className={classes.MenuContainer}>
-            <MenuItems />
-          </Box>
-        </Box>
-        <Stack direction={"column"} className={classes.SidebarFooter}>
-          <Stack
-            direction={"row"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            sx={{ mx: 2, mb: 2 }}
-            gap={2}
-          >
-            <div style={{ transform: "translateY(8px)" }}>
-              <ThemeToggle />
-            </div>
-          </Stack>
-
-          {/* -- Logout Button -- */}
+      <Box
+        component="aside"
+        className={classNames(classes.Sidebar, {
+          [classes.Hide]: !showSidebar,
+        })}
+      >
+        <Box className={classes.SidebarHeader}>
           <Button
-            sx={{ mx: 2 }}
+            data-shape="icon"
+            variant={"text"}
+            color="inherit"
+            size="lg"
+            onClick={() => setShowSidebar(!showSidebar)}
+            className={classes.SidebarToggle}
+          >
+            <Render in={!showSidebar}>
+              <List
+                size={22}
+                weight="bold"
+                style={{ transform: "scale(1.4)" }}
+              />
+            </Render>
+            <Render in={showSidebar}>
+              <DotsThreeOutlineVertical
+                size={22}
+                weight="fill"
+                style={{ transform: "scale(1.2)" }}
+              />
+            </Render>
+          </Button>
+          <div className={classes.Logo}>
+            <Image src="/favicon.ico" width={24} height={24} alt="Logo" />
+            <span>FALIN NEXT</span>
+          </div>
+        </Box>
+        <MenuList component={"nav"} className={classes.MenuContainer}>
+          <MenuItems menus={dashboardMenu} />
+          <MenuTitle title="Customization" />
+          <MenuItems menus={listCustomization} />
+          <MenuTitle title="Forms" />
+          <MenuItems menus={listMenuForms} />
+          <MenuTitle title="Components" />
+          <MenuItems menus={listComponents} />
+          <MenuTitle title="Extra UI" />
+          <MenuItems menus={listExtraUI} />
+        </MenuList>
+        <Stack direction={"column"} className={classes.SidebarFooter}>
+          <Button
             color="error"
             variant="text"
             onClick={handleLogout}
+            className={classes.LogoutButton}
+            data-shape={showSidebar ? "text" : "icon"}
             startIcon={
-              <SignOut weight="bold" style={{ transform: "rotate(180deg)" }} />
+              showSidebar && (
+                <SignOut
+                  weight="bold"
+                  size={22}
+                  style={{ transform: "rotate(180deg)" }}
+                />
+              )
             }
           >
-            Logout
+            {showSidebar ? (
+              <Typography fontWeight={"semiBold"}>Logout</Typography>
+            ) : (
+              <SignOut
+                weight="bold"
+                size={24}
+                style={{ transform: "rotate(180deg)" }}
+              />
+            )}
           </Button>
         </Stack>
       </Box>
@@ -107,6 +187,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               {menu?.subtitle ? menu.subtitle : "Dashboard Page"}
             </Typography>
           </Box>
+          <Stack direction="row" gap={2}>
+            <Button data-shape="icon" color="inherit" variant="text">
+              <Bell size={22} weight="duotone" />
+            </Button>
+            <ThemeToggle />
+            <Avatar
+              variant="rounded"
+              sx={{
+                bgcolor: colors.neutral[100],
+                color: colors.primary[400],
+              }}
+            >
+              <UserCircle weight="fill" size={22} />
+            </Avatar>
+          </Stack>
         </header>
         <Box>{children}</Box>
       </main>

@@ -1,7 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { env } from "./config/env";
 
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("token");
+  if (env("authentication") === "false") return NextResponse.next();
 
   // Protect /admin routes
   if (request.nextUrl.pathname.startsWith("/admin") && !token) {
