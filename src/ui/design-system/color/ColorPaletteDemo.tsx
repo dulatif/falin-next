@@ -42,14 +42,15 @@ function ColorSwatch({ color, shade, name }: ColorSwatchProps) {
 
   // Calculate contrast color for text
   const getContrastColor = (hexColor: string) => {
-    // Simple logic: distinct enough contrast?
-    // Using simple YIQ or just hardcoded thresholds based on shade number for simplicity
-    // Usually < 500 is dark text, > 500 is light text for simple scaling
-    // But better to verify with the actual hex if possible or just use a helper
-    // For this design system, let's use a simple heuristic based on the shade number if possible,
-    // or just the theme.palette.getContrastText but that requires adding these to the theme first.
-    // Let's stick to a simple visual style where the text is below the color block.
-    return parseInt(shade) > 500 ? "#fff" : "#000";
+    if (!hexColor || !hexColor.startsWith("#") || hexColor.length < 7) {
+      return "#000"; // Fallback for names or invalid
+    }
+    const hex = hexColor.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    return yiq >= 128 ? "#000" : "#fff";
   };
 
   return (
@@ -136,30 +137,173 @@ export default function ColorPaletteDemo() {
 
   return (
     <Stack spacing={6}>
-      {palettes.map((palette) => (
-        <Stack key={palette.name} spacing={2}>
-          <Box>
-            <Typography variant="h5" fontWeight={600} gutterBottom>
-              {palette.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Variable prefix: <code>{palette.prefix}</code>
-            </Typography>
-          </Box>
+      {palettes.map((palette) => {
+        // Attempt to get semantic values from the theme if they exist
+        // Note: 'neutral' might not be in theme.palette in the standard way, or strictly typed as PaletteColor
+        const themePalette = (theme.palette as any)[palette.prefix];
+        const hasSemantic =
+          themePalette &&
+          typeof themePalette === "object" &&
+          "main" in themePalette;
 
-          <Grid container spacing={2}>
-            {Object.entries(palette.colors).map(([shade, color]) => (
-              <Grid item xs={6} sm={4} md={2} lg={2} key={shade}>
-                <ColorSwatch
-                  color={color}
-                  shade={shade}
-                  name={palette.prefix}
-                />
+        return (
+          <Stack key={palette.name} spacing={3}>
+            <Box>
+              <Typography variant="h5" fontWeight={600} gutterBottom>
+                {palette.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Variable prefix: <code>{palette.prefix}</code>
+              </Typography>
+            </Box>
+
+            {/* Semantic Keys (Main, Light, Dark) */}
+            {hasSemantic && (
+              <Box>
+                <Typography
+                  variant="subtitle2"
+                  fontWeight={600}
+                  gutterBottom
+                  sx={{ mb: 2 }}
+                >
+                  Semantic Values
+                </Typography>
+                <Grid container spacing={2}>
+                  {["main", "light", "dark", "contrastText"].map((key) => {
+                    const colorValue = themePalette[key];
+                    if (!colorValue) return null;
+                    return (
+                      <Grid item xs={6} sm={4} md={2} lg={2} key={key}>
+                        <ColorSwatch
+                          color={colorValue}
+                          shade={key}
+                          name={palette.prefix}
+                        />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Box>
+            )}
+
+            {/* Numeric Scale */}
+            <Box>
+              <Typography
+                variant="subtitle2"
+                fontWeight={600}
+                gutterBottom
+                sx={{ mb: 2 }}
+              >
+                Scale
+              </Typography>
+              <Grid container spacing={2}>
+                {Object.entries(palette.colors).map(([shade, color]) => (
+                  <Grid item xs={6} sm={4} md={2} lg={2} key={shade}>
+                    <ColorSwatch
+                      color={color}
+                      shade={shade}
+                      name={palette.prefix}
+                    />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
+            </Box>
+          </Stack>
+        );
+      })}
+
+      {/* System Colors Section */}
+      <Stack spacing={3}>
+        <Box>
+          <Typography variant="h5" fontWeight={600} gutterBottom>
+            System Colors
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Text, Background, and Divider colors.
+          </Typography>
+        </Box>
+
+        <Box>
+          <Typography
+            variant="subtitle2"
+            fontWeight={600}
+            gutterBottom
+            sx={{ mb: 2 }}
+          >
+            Text
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.text.primary}
+                shade="primary"
+                name="text"
+              />
+            </Grid>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.text.secondary}
+                shade="secondary"
+                name="text"
+              />
+            </Grid>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.text.disabled}
+                shade="disabled"
+                name="text"
+              />
+            </Grid>
           </Grid>
-        </Stack>
-      ))}
+        </Box>
+
+        <Box>
+          <Typography
+            variant="subtitle2"
+            fontWeight={600}
+            gutterBottom
+            sx={{ mb: 2 }}
+          >
+            Background
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.background.default}
+                shade="default"
+                name="background"
+              />
+            </Grid>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.background.paper}
+                shade="paper"
+                name="background"
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
+        <Box>
+          <Typography
+            variant="subtitle2"
+            fontWeight={600}
+            gutterBottom
+            sx={{ mb: 2 }}
+          >
+            Divider
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={4} md={2} lg={2}>
+              <ColorSwatch
+                color={theme.palette.divider}
+                shade="default"
+                name="divider"
+              />
+            </Grid>
+          </Grid>
+        </Box>
+      </Stack>
     </Stack>
   );
 }

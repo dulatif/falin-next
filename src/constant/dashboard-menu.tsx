@@ -138,6 +138,12 @@ export const listComponents: MenuItem[] = [
     icon: <Pill size={22} weight="bold" />,
   },
   {
+    menuKey: "chip",
+    title: "Chip",
+    path: "/design-system/chip",
+    icon: <Pill size={22} weight="bold" />, // Using Pill for Chip as well if no specific icon
+  },
+  {
     menuKey: "avatars",
     title: "Avatars",
     path: "/design-system/avatar",
