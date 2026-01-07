@@ -94,13 +94,8 @@
   --danger-900: #7f1d1d;
 
   /* Semantic Aliases for Light Mode */
-  --bg-sidebar-start: #fff;
-  --bg-sidebar-end: var(--neutral-200);
-  --bg-sidebar: linear-gradient(
-    90deg,
-    var(--bg-sidebar-start) 0%,
-    var(--bg-sidebar-end) 100%
-  );
+  --bg-dashboard: var(--neutral-200);
+  --menu-active: var(--primary-200);
 
   --text-primary: var(--neutral-700);
   --text-secondary: var(--neutral-500);
@@ -203,13 +198,8 @@
   --danger-900: #fffbfa;
 
   /* Semantic Aliases for Dark Mode */
-  --bg-sidebar-start: var(--neutral-50);
-  --bg-sidebar-end: var(--neutral-25);
-  --bg-sidebar: linear-gradient(
-    90deg,
-    var(--bg-sidebar-start) 0%,
-    var(--bg-sidebar-end) 100%
-  );
+  --bg-dashboard: var(--neutral-50);
+  --menu-active: var(--primary-25);
 
   --text-primary: var(--neutral-800);
   --text-secondary: var(--neutral-500);

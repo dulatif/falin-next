@@ -9,6 +9,7 @@
   overflow-y: hidden;
   padding: $space-3;
   gap: $space-3;
+  background-color: var(--bg-dashboard);
 }
 
 .Sidebar {
@@ -159,7 +160,7 @@
   }
 
   &.Active {
-    background-color: $neutral-50;
+    background-color: var(--menu-active);
     color: $neutral-700;
   }
 
