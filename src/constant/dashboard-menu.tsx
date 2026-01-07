@@ -116,12 +116,6 @@ export const listMenuForms: MenuItem[] = [
     path: "/design-system/upload-file",
     icon: <CloudArrowUp size={22} weight="bold" />,
   },
-  {
-    menuKey: "form-editor",
-    title: "Form Editor",
-    path: "/design-system/form-editor",
-    icon: <BracketsAngle size={22} weight="bold" />,
-  },
 ];
 
 export const listComponents: MenuItem[] = [
@@ -206,6 +200,12 @@ export const listComponents: MenuItem[] = [
 ];
 
 export const listExtraUI: MenuItem[] = [
+  {
+    menuKey: "rich-text-editor",
+    title: "Rich Text Editor",
+    path: "/design-system/rich-text-editor",
+    icon: <BracketsAngle size={22} weight="bold" />,
+  },
   {
     menuKey: "chart",
     title: "Chart",
