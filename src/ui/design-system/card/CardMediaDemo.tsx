@@ -10,7 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Pause, Play, SkipBack, SkipForward } from "phosphor-react";
+import { Play, SkipBack, SkipForward } from "phosphor-react";
 
 // # components
 export default function CardMediaDemo() {

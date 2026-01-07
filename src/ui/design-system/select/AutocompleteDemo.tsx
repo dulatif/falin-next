@@ -7,7 +7,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
 
 // # components
 const top100Films = [
@@ -19,14 +18,6 @@ const top100Films = [
 ];
 
 export default function AutocompleteDemo() {
-  const [value, setValue] = useState<string | null>(top100Films[0].label);
-  const [inputValue, setInputValue] = useState("");
-
-  const [multiValue, setMultiValue] = useState([
-    top100Films[0],
-    top100Films[1],
-  ]);
-
   return (
     <Stack spacing={2}>
       <Typography variant="subtitle2" color="text.secondary">

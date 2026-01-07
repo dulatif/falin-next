@@ -31,50 +31,6 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-// Styled Components for "Filled" look
-const FilledTabs = styled(Tabs)({
-  borderBottom: "1px solid #e8e8e8",
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
-  },
-});
-
-const FilledTab = styled((props: { label: string }) => (
-  <Tab disableRipple {...props} />
-))(({ theme }) => ({
-  textTransform: "none",
-  minWidth: 0,
-  [theme.breakpoints.up("sm")]: {
-    minWidth: 0,
-  },
-  fontWeight: theme.typography.fontWeightRegular,
-  marginRight: theme.spacing(1),
-  color: "rgba(0, 0, 0, 0.85)",
-  fontFamily: [
-    "-apple-system",
-    "BlinkMacSystemFont",
-    '"Segoe UI"',
-    "Roboto",
-    '"Helvetica Neue"',
-    "Arial",
-    "sans-serif",
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(","),
-  "&:hover": {
-    color: "#40a9ff",
-    opacity: 1,
-  },
-  "&.Mui-selected": {
-    color: "#1890ff",
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-  "&.Mui-focusVisible": {
-    backgroundColor: "#d1eaff",
-  },
-}));
-
 // Another variant: truly "filled" background
 const SegmentedTabs = styled(Tabs)(({ theme }) => ({
   backgroundColor:

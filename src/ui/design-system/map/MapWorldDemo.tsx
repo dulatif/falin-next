@@ -1,9 +1,8 @@
 "use client";
 
+import { Box, Paper, Stack, Tooltip, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
-import { Box, Paper, Stack, Typography, Tooltip } from "@mui/material";
-import { useState } from "react";
 
 // # entity
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
@@ -11,7 +10,6 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 // # components
 export default function MapWorldDemo() {
   const theme = useTheme();
-  const [tooltipContent, setTooltipContent] = useState("");
 
   return (
     <Stack spacing={2}>
@@ -40,12 +38,6 @@ export default function MapWorldDemo() {
                     <Tooltip key={geo.rsmKey} title={geo.properties.name} arrow followCursor>
                         <Geography
                             geography={geo}
-                            onMouseEnter={() => {
-                                setTooltipContent(geo.properties.name);
-                            }}
-                            onMouseLeave={() => {
-                                setTooltipContent("");
-                            }}
                             style={{
                                 default: {
                                     fill: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[300],

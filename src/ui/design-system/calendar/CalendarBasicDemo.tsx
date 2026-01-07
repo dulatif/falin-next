@@ -3,7 +3,7 @@
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
-import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import { useRef } from "react";
 
 // # entity

@@ -120,11 +120,9 @@ const MUI_ICONS = [
 // # components
 function IconCard({
   icon,
-  name,
   importName,
 }: {
   icon: React.ReactNode;
-  name: string;
   importName: string;
 }) {
   return (
@@ -203,18 +201,13 @@ export default function MuiIconsDemo() {
       <Grid container spacing={2}>
         {MUI_ICONS.slice(0, 50).map((icon, index) => (
           <Grid
-            item
-            xs={6}
-            sm={4}
-            md={2}
-            lg={2}
+            size={{xs: 6, sm: 4, md: 2, lg: 2}}
             key={`${icon.name}-${index}`}
             display="flex"
             justifyContent="center"
           >
             <IconCard
               icon={icon.icon}
-              name={icon.name}
               importName={icon.import}
             />
           </Grid>

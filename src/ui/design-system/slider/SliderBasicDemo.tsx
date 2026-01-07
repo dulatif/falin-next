@@ -2,7 +2,6 @@
 
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
-import { useEffect, useState } from "react";
 
 // # components
 function Slide({ index }: { index: number }) {

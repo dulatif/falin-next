@@ -1,9 +1,8 @@
 "use client";
 
-import { Box, Button, Card, CardContent, Paper, Stack, Typography } from "@mui/material";
-import { UploadSimple } from "phosphor-react";
-import { useRef, useState } from "react";
 import UploadFile from "@/ui/components/UploadFile";
+import { Button, Card, CardContent, Paper, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function UploadCardDemo() {
   const [file, setFile] = useState<File | null>(null);

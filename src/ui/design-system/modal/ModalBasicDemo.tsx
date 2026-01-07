@@ -1,9 +1,8 @@
 "use client";
 
-import { Button, Paper, Stack, Typography } from "@mui/material";
-import { Info } from "phosphor-react";
-import { useState } from "react";
 import { Modal } from "@/ui/layouts/Modal";
+import { Button, Paper, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
 // # components
 export default function ModalBasicDemo() {
