@@ -78,7 +78,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
   const theme = useTheme();
   const colors = getColors(theme.palette.mode);
-  const menu = dashboardMenu.find((item) => item.path === pathname);
+  const menu = dashboardMenu.find((item) => pathname.includes(item.path));
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleLogout = async () => {
