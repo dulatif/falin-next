@@ -143,7 +143,7 @@ function IconCard({
         height: 100,
         transition: "all 0.2s",
         "&:hover": {
-          borderColor: "primary.main",
+          borderColor: "text.secondary",
           bgcolor: "action.hover",
           transform: "translateY(-2px)",
           boxShadow: shadows.lg,
@@ -189,7 +189,7 @@ export default function MuiIconsDemo() {
         </Typography>
         <Chip
           label="@mui/icons-material"
-          color="secondary"
+          color="primary"
           size="small"
           sx={{ fontFamily: "monospace" }}
         />

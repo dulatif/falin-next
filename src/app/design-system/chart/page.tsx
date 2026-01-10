@@ -10,18 +10,6 @@ export default function ChartPage() {
   return (
     <Container sx={{ p: 4 }} maxWidth="xl">
       <Stack spacing={4}>
-        {/* Page Header */}
-        <Stack spacing={1}>
-          <Typography variant="h4" fontWeight={700} gutterBottom>
-            Charts
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Visual representations of data using ApexCharts.
-          </Typography>
-        </Stack>
-
-        <Divider />
-
         <Grid container spacing={4}>
           {/* Line Chart */}
           <Grid size={{ xs: 12, lg: 6 }}>

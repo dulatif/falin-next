@@ -10,18 +10,6 @@ export default function CheckboxPage() {
   return (
     <Container sx={{ p: 4 }} maxWidth="xl">
       <Stack spacing={4}>
-        {/* Page Header */}
-        <Stack spacing={1}>
-          <Typography variant="h4" fontWeight={700} gutterBottom>
-            Checkbox
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Checkboxes allow the user to select one or more items from a set.
-          </Typography>
-        </Stack>
-
-        <Divider />
-
         {/* Basic */}
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight={600}>

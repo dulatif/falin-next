@@ -11,18 +11,6 @@ export default function UploadFilePage() {
   return (
     <Container sx={{ p: 4 }} maxWidth="xl">
       <Stack spacing={4}>
-        {/* Page Header */}
-        <Stack spacing={1}>
-          <Typography variant="h4" fontWeight={700} gutterBottom>
-            Upload File
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Various methods for uploading files, from simple buttons to complex picture walls.
-          </Typography>
-        </Stack>
-
-        <Divider />
-
         {/* Drag & Drop */}
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight={600}>
@@ -58,7 +46,7 @@ export default function UploadFilePage() {
           <Typography variant="h6" fontWeight={600}>
             Picture Wall
           </Typography>
-           <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary">
             Multiple image upload with preview and delete actions.
           </Typography>
           <UploadPictureWallDemo />
@@ -66,14 +54,13 @@ export default function UploadFilePage() {
 
         <Divider />
 
-         {/* Card Upload */}
-         <Stack spacing={2}>
+        {/* Card Upload */}
+        <Stack spacing={2}>
           <Typography variant="h6" fontWeight={600}>
             Card Upload
           </Typography>
           <UploadCardDemo />
         </Stack>
-
       </Stack>
     </Container>
   );
