@@ -2,10 +2,32 @@
   <img src="https://falin-next.vercel.app/falin-logo.png" alt="Logo" width="100" height="100" />
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/create-falin-next"><img src="https://img.shields.io/npm/v/create-falin-next.svg?style=flat-square" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/create-falin-next"><img src="https://img.shields.io/npm/dm/create-falin-next.svg?style=flat-square" alt="npm downloads" /></a>
+  <a href="https://github.com/dulatif/falin-next/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="license" /></a>
+</p>
 
 # Falin Next
 
 A production-ready Enterprise boilerplate for Next.js 16, Material UI v6, and TypeScript.
+
+## ⚡ Installation
+
+Create a new project using the CLI:
+
+```bash
+npx create-falin-next my-app
+cd my-app
+npm install
+npm run dev
+```
+
+Or with interactive prompts:
+
+```bash
+npx create-falin-next
+```
 
 ## 🚀 Tech Stack
 
