@@ -1,4 +1,4 @@
-import { Container, Divider, Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { MapWorldDemo } from "@/ui/design-system/map";
 
 export default function MapPage() {

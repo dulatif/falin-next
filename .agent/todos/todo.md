@@ -17,6 +17,7 @@
 
 ### Other todo
 - [] the github ci pipeline still not working. Need to configure the husky
+- [] add props table for all components
 
 
 reference : https://akveo.github.io/nebular/docs/components/toggle/overview#nbtogglecomponent

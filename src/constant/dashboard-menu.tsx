@@ -23,9 +23,11 @@ import {
   Tabs,
   Textbox,
   TextT,
+  User,
   UserCircle,
   WarningCircle,
   WaveSine,
+  XCircle,
 } from "phosphor-react";
 import { ReactNode } from "react";
 
@@ -286,6 +288,19 @@ export const listExtraUI: MenuItem[] = [
   },
 ];
 
-export const listPages: MenuItem[] = [];
+export const listPages: MenuItem[] = [
+  {
+    menuKey: "not-found",
+    title: "Not Found",
+    path: "/not-found",
+    icon: <XCircle size={22} weight="bold" />,
+  },
+  {
+    menuKey: "login",
+    title: "Login",
+    path: "/login",
+    icon: <User size={22} weight="bold" />,
+  },
+];
 
 export default dashboardMenu;
