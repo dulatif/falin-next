@@ -33,7 +33,7 @@ export interface IFormGroup extends FormControlProps, PropsWithChildren {
   label: string;
   helperText?: string;
 }
-const FormGroup: React.FC<IFormGroup> = React.forwardRef((props) => {
+const FormGroup: React.FC<IFormGroup> = React.forwardRef((props, ref) => {
   const { label, helperText, children, ...formControlProps } = props;
   return (
     <FormControl
@@ -41,6 +41,7 @@ const FormGroup: React.FC<IFormGroup> = React.forwardRef((props) => {
       required={props.required}
       error={props.error}
       disabled={props.disabled}
+      ref={ref}
       {...formControlProps}
     >
       <InputLabel>{label}</InputLabel>
