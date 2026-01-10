@@ -1,4 +1,3 @@
-- [] create table component (data table and default table)
 - [] create box icon component
 - [] create pagination component
 - [] create pop up search box component like command pallete. Add shortcut ctrl + k to search
