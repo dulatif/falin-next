@@ -96,7 +96,6 @@ export const createComponents = (mode: "light" | "dark"): Components => {
       defaultProps: {
         variant: "contained",
         size: "md",
-        disableRipple: true,
       },
       styleOverrides: {
         root: {

@@ -21,13 +21,14 @@ import {
   SignOut,
   UserCircle,
 } from "phosphor-react";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import dashboardMenu, {
   MenuItem as DashboardMenuItem,
   listComponents,
   listCustomization,
   listExtraUI,
   listMenuForms,
+  listPages,
 } from "@/constant/dashboard-menu";
 import { getColors } from "@/theme/ts/colors";
 import { ThemeToggle } from "@/ui/components/ThemeToggle";
@@ -72,14 +73,33 @@ const MenuTitle: React.FC<{ title: string }> = ({ title }) => {
   );
 };
 
+// # constants
+const SIDEBAR_STORAGE_KEY = "dashboard_sidebar_visible";
+
+const allMenus = [
+  ...dashboardMenu,
+  ...listCustomization,
+  ...listMenuForms,
+  ...listComponents,
+  ...listExtraUI,
+];
+
 // DashboardLayout
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
   const theme = useTheme();
   const colors = getColors(theme.palette.mode);
-  const menu = dashboardMenu.find((item) => pathname.includes(item.path));
-  const [showSidebar, setShowSidebar] = useState(false);
+  const menu = allMenus.find((item) => pathname.trim().includes(item.path));
+  const [showSidebar, setShowSidebar] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem(SIDEBAR_STORAGE_KEY) === "true";
+  });
+
+  // Sync sidebar state to sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem(SIDEBAR_STORAGE_KEY, String(showSidebar));
+  }, [showSidebar]);
 
   const handleLogout = async () => {
     const result = await logout();
@@ -135,6 +155,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <MenuItems menus={listComponents} />
           <MenuTitle title="Extra UI" />
           <MenuItems menus={listExtraUI} />
+          <MenuTitle title="Pages" />
+          <MenuItems menus={listPages} />
         </MenuList>
         <Stack direction={"column"} className={classes.SidebarFooter}>
           <Button
@@ -176,8 +198,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         >
           <Box>
             <Typography
-              variant="h6"
-              fontWeight={"semiBold"}
+              variant="h5"
+              fontWeight={"bold"}
               className={classes.PageTitle}
               mb={2}
             >

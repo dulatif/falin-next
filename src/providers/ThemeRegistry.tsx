@@ -31,8 +31,9 @@ const ThemeProviderWrapper = ({ children }: { children: React.ReactNode }) => {
               z-index: 9999 !important;
             }
             .nprogress .bar {
+              transition: all 0.5s ease-in-out;
               z-index: 9999 !important;
-              background: var(--primary-300) !important;
+              background: var(--primary-500) !important;
               position: fixed;
               top: 0;
               left: 0;

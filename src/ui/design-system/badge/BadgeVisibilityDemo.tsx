@@ -29,21 +29,23 @@ export default function BadgeVisibilityDemo() {
           </Badge>
           <Stack spacing={1} direction="row">
             <Button
+              data-shape="icon"
               aria-label="reduce"
               onClick={() => {
                 setCount(Math.max(count - 1, 0));
               }}
-              variant="outlined"
+              variant="text"
               size="sm"
             >
               -
             </Button>
             <Button
+              data-shape="icon"
               aria-label="increase"
               onClick={() => {
                 setCount(count + 1);
               }}
-              variant="outlined"
+              variant="text"
               size="sm"
             >
               +

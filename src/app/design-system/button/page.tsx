@@ -12,20 +12,6 @@ export default function ButtonPage() {
   return (
     <Container sx={{ p: 4 }} maxWidth="xl">
       <Stack spacing={4}>
-        {/* Page Header */}
-        <Stack spacing={1}>
-          <Typography variant="h4" fontWeight={700} gutterBottom>
-            Button
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Buttons allow users to take actions, and make choices, with a single
-            tap. Material UI buttons are used to communicate actions that users
-            can take.
-          </Typography>
-        </Stack>
-
-        <Divider />
-
         {/* Variants */}
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight={600}>

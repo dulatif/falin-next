@@ -163,7 +163,7 @@ function IconCard({
         height: 100,
         transition: "all 0.2s",
         "&:hover": {
-          borderColor: "primary.main",
+          borderColor: "text.secondary",
           bgcolor: "action.hover",
           transform: "translateY(-2px)",
           boxShadow: shadows.lg,
@@ -209,7 +209,7 @@ export default function PhosphorIconsDemo() {
         </Typography>
         <Chip
           label="phosphor-react"
-          color="primary"
+          color="warning"
           size="small"
           sx={{ fontFamily: "monospace" }}
         />
