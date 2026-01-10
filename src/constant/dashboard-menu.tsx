@@ -116,12 +116,6 @@ export const listMenuForms: MenuItem[] = [
     path: "/design-system/upload-file",
     icon: <CloudArrowUp size={22} weight="bold" />,
   },
-  {
-    menuKey: "form-editor",
-    title: "Form Editor",
-    path: "/design-system/form-editor",
-    icon: <BracketsAngle size={22} weight="bold" />,
-  },
 ];
 
 export const listComponents: MenuItem[] = [
@@ -136,6 +130,12 @@ export const listComponents: MenuItem[] = [
     title: "Badge",
     path: "/design-system/badge",
     icon: <Pill size={22} weight="bold" />,
+  },
+  {
+    menuKey: "chip",
+    title: "Chip",
+    path: "/design-system/chip",
+    icon: <Pill size={22} weight="bold" />, // Using Pill for Chip as well if no specific icon
   },
   {
     menuKey: "avatars",
@@ -200,6 +200,12 @@ export const listComponents: MenuItem[] = [
 ];
 
 export const listExtraUI: MenuItem[] = [
+  {
+    menuKey: "rich-text-editor",
+    title: "Rich Text Editor",
+    path: "/design-system/rich-text-editor",
+    icon: <BracketsAngle size={22} weight="bold" />,
+  },
   {
     menuKey: "chart",
     title: "Chart",

@@ -21,13 +21,27 @@ const ThemeProviderWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ProgressBar
-        height="2px"
-        color="#3b82f6"
-        options={{ showSpinner: false }}
-        shallowRouting
-        spinnerPosition="bottom-right"
-      />
+      <React.Suspense fallback={null}>
+        <ProgressBar
+          height="2px"
+          shallowRouting
+          style={`
+            .nprogress {
+              pointer-events: none;
+              z-index: 9999 !important;
+            }
+            .nprogress .bar {
+              z-index: 9999 !important;
+              background: var(--primary-300) !important;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 3px !important;
+            }
+          `}
+        />
+      </React.Suspense>
       {children}
     </ThemeProvider>
   );

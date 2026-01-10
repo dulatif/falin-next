@@ -35,15 +35,8 @@ const nextConfig: NextConfig = {
 ${content}`;
     },
   },
-  modularizeImports: {
-    "@mui/material": {
-      transform: "@mui/material/{{member}}",
-      preventFullImport: true,
-    },
-    "@mui/icons-material": {
-      transform: "@mui/icons-material/{{member}}",
-      preventFullImport: true,
-    },
+  experimental: {
+    optimizePackageImports: ["@mui/material", "@mui/icons-material", "phosphor-react"],
   },
   images: {
     remotePatterns: [

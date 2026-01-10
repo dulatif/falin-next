@@ -1,14 +1,12 @@
 "use client";
 
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GithubLogo } from "phosphor-react";
+import { ArrowRight } from "phosphor-react";
+import GithubButton from "@/ui/components/GithubButton";
 
 export default function Home() {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -17,7 +15,7 @@ export default function Home() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        background: `linear-gradient(45deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
+        background: `linear-gradient(45deg, var(--mui-palette-background-default) 0%, var(--mui-palette-background-paper) 100%)`,
       }}
     >
       <Container maxWidth="lg">
@@ -42,7 +40,7 @@ export default function Home() {
             fontWeight={"regular"}
             sx={{ maxWidth: 600 }}
           >
-            A powerful, clean, and opinionated starter template with Next.js 15,
+            A powerful, clean, and opinionated starter template with Next.js 16,
             Material UI v6, React Query, and TypeScript.
           </Typography>
 
@@ -52,15 +50,7 @@ export default function Home() {
                 Go to Dashboard
               </Button>
             </Link>
-            <Button
-              variant="text"
-              size="lg"
-              color="inherit"
-              startIcon={<GithubLogo />}
-              onClick={() => window.open("https://github.com/", "_blank")}
-            >
-              GitHub
-            </Button>
+            <GithubButton />
           </Stack>
 
           <Box
@@ -69,7 +59,7 @@ export default function Home() {
               p: 3,
               borderRadius: 2,
               bgcolor: "background.paper",
-              border: `1px solid ${theme.palette.divider}`,
+              border: `1px solid var(--mui-palette-divider)`,
               width: "100%",
             }}
           >

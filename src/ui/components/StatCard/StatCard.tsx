@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Card, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { ApexOptions } from "apexcharts";
