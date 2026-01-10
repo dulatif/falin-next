@@ -1,5 +1,3 @@
-"use client";
-
 import { Grid } from "@mui/material";
 import StatCard from "@/ui/components/StatCard";
 
