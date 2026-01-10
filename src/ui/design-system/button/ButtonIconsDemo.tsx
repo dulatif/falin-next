@@ -16,7 +16,7 @@ export default function ButtonIconsDemo() {
         sx={{ p: 4, border: 1, borderColor: "divider", borderRadius: 2 }}
       >
         <Grid container spacing={4}>
-          <Grid item md={6}>
+          <Grid size={{ md: 6 }}>
             <Typography fontWeight={"semiBold"} color="text.secondary" mb={1}>
               Button With Icon
             </Typography>
@@ -79,7 +79,7 @@ export default function ButtonIconsDemo() {
               </Stack>
             </Stack>
           </Grid>
-          <Grid item md={6}>
+          <Grid size={{ md: 6 }}>
             <Typography fontWeight={"semiBold"} color="text.secondary" mb={1}>
               Only Icon Button
             </Typography>

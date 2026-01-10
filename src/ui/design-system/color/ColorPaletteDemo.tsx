@@ -8,7 +8,6 @@ import { useState } from "react";
 import { getColors } from "@/theme/ts/colors";
 
 // # constants
-// # constants
 // Helper to generate palettes based on mode
 const getPalettes = (mode: "light" | "dark") => {
   const colors = getColors(mode);
@@ -173,7 +172,7 @@ export default function ColorPaletteDemo() {
                     const colorValue = themePalette[key];
                     if (!colorValue) return null;
                     return (
-                      <Grid item xs={6} sm={4} md={2} lg={2} key={key}>
+                      <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }} key={key}>
                         <ColorSwatch
                           color={colorValue}
                           shade={key}
@@ -198,7 +197,7 @@ export default function ColorPaletteDemo() {
               </Typography>
               <Grid container spacing={2}>
                 {Object.entries(palette.colors).map(([shade, color]) => (
-                  <Grid item xs={6} sm={4} md={2} lg={2} key={shade}>
+                  <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }} key={shade}>
                     <ColorSwatch
                       color={color}
                       shade={shade}
@@ -233,21 +232,21 @@ export default function ColorPaletteDemo() {
             Text
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.text.primary}
                 shade="primary"
                 name="text"
               />
             </Grid>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.text.secondary}
                 shade="secondary"
                 name="text"
               />
             </Grid>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.text.disabled}
                 shade="disabled"
@@ -267,14 +266,14 @@ export default function ColorPaletteDemo() {
             Background
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.background.default}
                 shade="default"
                 name="background"
               />
             </Grid>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.background.paper}
                 shade="paper"
@@ -294,7 +293,7 @@ export default function ColorPaletteDemo() {
             Divider
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={4} md={2} lg={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2 }}>
               <ColorSwatch
                 color={theme.palette.divider}
                 shade="default"

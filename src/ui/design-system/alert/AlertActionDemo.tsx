@@ -28,7 +28,7 @@ export default function AlertActionDemo() {
           <Alert
             severity="warning"
             action={
-              <Button color="inherit" size="small">
+              <Button color="inherit" size="sm">
                 UNDO
               </Button>
             }

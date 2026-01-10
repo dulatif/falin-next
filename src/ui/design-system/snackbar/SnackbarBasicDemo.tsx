@@ -32,11 +32,11 @@ export default function SnackbarBasicDemo() {
 
   const action = (
     <>
-      <Button color="secondary" size="small" onClick={handleClose}>
+      <Button color="secondary" size="sm" onClick={handleClose}>
         UNDO
       </Button>
       <IconButton
-        size="small"
+        size="sm"
         aria-label="close"
         color="inherit"
         onClick={handleClose}

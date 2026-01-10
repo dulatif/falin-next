@@ -21,13 +21,13 @@ export default function ButtonSizesDemo() {
           flexWrap="wrap"
           useFlexGap
         >
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="sm">
             Small
           </Button>
-          <Button variant="contained" size="medium">
+          <Button variant="contained" size="md">
             Medium
           </Button>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="lg">
             Large
           </Button>
         </Stack>

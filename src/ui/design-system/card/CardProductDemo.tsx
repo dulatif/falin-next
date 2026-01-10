@@ -76,7 +76,7 @@ export default function CardProductDemo() {
 
       <Grid container spacing={3}>
         {products.map((product) => (
-          <Grid key={product.id} item xs={12} sm={6} md={3}>
+          <Grid key={product.id} size={{ xs: 12, sm: 6, md: 3 }}>
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
             >
@@ -149,7 +149,7 @@ export default function CardProductDemo() {
                     </Typography>
                     <Button
                       variant="contained"
-                      size="small"
+                      size="sm"
                       sx={{ minWidth: "unset", p: 1 }}
                     >
                       <ShoppingCart weight="fill" size={20} />

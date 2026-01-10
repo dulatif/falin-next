@@ -44,7 +44,7 @@ export default function CardBasicDemo() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="sm">Learn More</Button>
           </CardActions>
         </Card>
       </Paper>

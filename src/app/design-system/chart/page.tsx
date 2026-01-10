@@ -24,7 +24,7 @@ export default function ChartPage() {
 
         <Grid container spacing={4}>
           {/* Line Chart */}
-          <Grid item xs={12} lg={6}>
+          <Grid size={{ xs: 12, lg: 6 }}>
             <Stack spacing={2}>
               <Typography variant="h6" fontWeight={600}>
                 Line Chart
@@ -34,7 +34,7 @@ export default function ChartPage() {
           </Grid>
 
           {/* Area Chart */}
-          <Grid item xs={12} lg={6}>
+          <Grid size={{ xs: 12, lg: 6 }}>
             <Stack spacing={2}>
               <Typography variant="h6" fontWeight={600}>
                 Area Chart
@@ -44,7 +44,7 @@ export default function ChartPage() {
           </Grid>
 
           {/* Column Chart */}
-          <Grid item xs={12} lg={6}>
+          <Grid size={{ xs: 12, lg: 6 }}>
             <Stack spacing={2}>
               <Typography variant="h6" fontWeight={600}>
                 Column Chart
@@ -54,7 +54,7 @@ export default function ChartPage() {
           </Grid>
 
           {/* Pie Chart */}
-          <Grid item xs={12} lg={6}>
+          <Grid size={{ xs: 12, lg: 6 }}>
             <Stack spacing={2}>
               <Typography variant="h6" fontWeight={600}>
                 Pie Chart

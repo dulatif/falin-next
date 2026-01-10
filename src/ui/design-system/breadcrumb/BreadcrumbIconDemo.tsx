@@ -25,27 +25,27 @@ export default function BreadcrumbIconDemo() {
           <Breadcrumbs aria-label="breadcrumb">
             <Link
               underline="hover"
-              sx={{ display: "flex", alignItems: "center" }}
+              sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
               color="inherit"
               href="/"
             >
-              <House sx={{ mr: 0.5 }} fontSize="inherit" />
+              <House size={20} />
               MUI
             </Link>
             <Link
               underline="hover"
-              sx={{ display: "flex", alignItems: "center" }}
+              sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
               color="inherit"
               href="/material-ui/getting-started/installation/"
             >
-              <ListDashes sx={{ mr: 0.5 }} fontSize="inherit" />
+              <ListDashes size={20} />
               Core
             </Link>
             <Typography
-              sx={{ display: "flex", alignItems: "center" }}
+              sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
               color="text.primary"
             >
-              <Grain sx={{ mr: 0.5 }} fontSize="inherit" />
+              <Grain fontSize="inherit" />
               Breadcrumb
             </Typography>
           </Breadcrumbs>

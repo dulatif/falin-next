@@ -5,7 +5,7 @@ import { CaretRight } from "phosphor-react";
 
 // # components
 export default function BreadcrumbCustomSeparatorDemo() {
-  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
   }

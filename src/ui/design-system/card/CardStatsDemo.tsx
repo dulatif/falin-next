@@ -28,7 +28,7 @@ export default function CardStatsDemo() {
 
       <Grid container spacing={3}>
         {/* Stat Card 1 */}
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card>
             <CardContent>
               <Stack spacing={3}>
@@ -86,7 +86,7 @@ export default function CardStatsDemo() {
         </Grid>
 
         {/* Stat Card 2 */}
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card>
             <CardContent>
               <Stack spacing={3}>
@@ -144,7 +144,7 @@ export default function CardStatsDemo() {
         </Grid>
 
         {/* Stat Card 3 */}
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card>
             <CardContent>
               <Stack spacing={3}>

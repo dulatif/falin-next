@@ -34,7 +34,7 @@ export default function BadgeVisibilityDemo() {
                 setCount(Math.max(count - 1, 0));
               }}
               variant="outlined"
-              size="small"
+              size="sm"
             >
               -
             </Button>
@@ -44,14 +44,14 @@ export default function BadgeVisibilityDemo() {
                 setCount(count + 1);
               }}
               variant="outlined"
-              size="small"
+              size="sm"
             >
               +
             </Button>
             <Button
               onClick={handleBadgeVisibility}
               variant="contained"
-              size="small"
+              size="sm"
             >
               Toggle Visibility
             </Button>
