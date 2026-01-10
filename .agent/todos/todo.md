@@ -1,7 +1,5 @@
-- [] create stepper component
-- [] toggle/switch component
-- [] create box icon component
 - [] create table component (data table and default table)
+- [] create box icon component
 - [] create pagination component
 - [] create pop up search box component like command pallete. Add shortcut ctrl + k to search
 
@@ -12,6 +10,7 @@
 ### Extra UI
 - [] login page
 - [] dashboard layout page
+- search in shadcn example as reference
 
 
 ### Other todo

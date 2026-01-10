@@ -23,6 +23,7 @@ import {
   Tabs,
   Textbox,
   TextT,
+  ToggleLeft,
   User,
   UserCircle,
   WarningCircle,
@@ -136,6 +137,13 @@ export const listMenuForms: MenuItem[] = [
       "Various methods for uploading files, from simple buttons to complex picture walls.",
     path: "/design-system/upload-file",
     icon: <CloudArrowUp size={22} weight="bold" />,
+  },
+  {
+    menuKey: "switch",
+    title: "Switch",
+    subtitle: "Switches toggle the state of a single setting on or off.",
+    path: "/design-system/switch",
+    icon: <ToggleLeft size={22} weight="bold" />,
   },
 ];
 
