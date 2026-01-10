@@ -44,3 +44,7 @@ next-env.d.ts
 .local
 
 .vscode
+
+# CLI tool
+cli/node_modules
+cli/bun.lockb
