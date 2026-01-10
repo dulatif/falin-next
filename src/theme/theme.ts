@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { createComponents } from "./ts/components";
 import { darkPalette, lightPalette } from "./ts/palettes";
+import { shadowsArray } from "./ts/shadows";
 import { typography } from "./ts/typography";
 
 export const createAppTheme = (mode: "light" | "dark") => {
@@ -12,6 +13,7 @@ export const createAppTheme = (mode: "light" | "dark") => {
     shape: {
       borderRadius: 8,
     },
+    shadows: shadowsArray,
   });
 };
 

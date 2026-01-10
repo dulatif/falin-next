@@ -50,6 +50,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import WarningIcon from "@mui/icons-material/Warning";
 import { Box, Chip, Grid, Paper, Stack, Typography } from "@mui/material";
+import { shadows } from "@/theme/ts/shadows";
 
 // # constants
 const MUI_ICONS = [
@@ -145,6 +146,7 @@ function IconCard({
           borderColor: "primary.main",
           bgcolor: "action.hover",
           transform: "translateY(-2px)",
+          boxShadow: shadows.lg,
         },
       }}
     >
@@ -201,15 +203,12 @@ export default function MuiIconsDemo() {
       <Grid container spacing={2}>
         {MUI_ICONS.slice(0, 50).map((icon, index) => (
           <Grid
-            size={{xs: 6, sm: 4, md: 2, lg: 2}}
+            size={{ xs: 6, sm: 4, md: 2, lg: 2 }}
             key={`${icon.name}-${index}`}
             display="flex"
             justifyContent="center"
           >
-            <IconCard
-              icon={icon.icon}
-              importName={icon.import}
-            />
+            <IconCard icon={icon.icon} importName={icon.import} />
           </Grid>
         ))}
       </Grid>
