@@ -141,7 +141,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </Render>
           </Button>
           <div className={classes.Logo}>
-            <Image src="/favicon.ico" width={24} height={24} alt="Logo" />
+            <Image src="/falin-logo.png" width={24} height={24} alt="Logo" />
             <span>FALIN NEXT</span>
           </div>
         </Box>
