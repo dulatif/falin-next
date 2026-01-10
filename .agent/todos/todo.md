@@ -1,4 +1,3 @@
-- [] radio & checkbox to use modern style. Rounded, minimalist border, there's fade animation, and box shadow on hover.
 - [] create stepper component
 - [] toggle/switch component
 - [] create box icon component

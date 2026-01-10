@@ -205,8 +205,10 @@ export const listComponents: MenuItem[] = [
   {
     menuKey: "stepper",
     title: "Stepper",
+    subtitle:
+      "Steppers allow users to track progress through a sequence of steps.",
     path: "/design-system/stepper",
-    icon: <Table size={22} weight="bold" />,
+    icon: <Palette size={22} weight="bold" />,
   },
   {
     menuKey: "accordion",

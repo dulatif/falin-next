@@ -855,5 +855,19 @@ export const createComponents = (mode: "light" | "dark"): Components => {
         },
       },
     },
+    MuiStepConnector: {
+      styleOverrides: {
+        line: {
+          borderColor: colors.neutral[200],
+        },
+      },
+    },
+    MuiStepContent: {
+      styleOverrides: {
+        root: {
+          borderColor: colors.neutral[200],
+        },
+      },
+    },
   };
 };
