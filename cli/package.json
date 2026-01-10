@@ -17,6 +17,13 @@
   ],
   "author": "DuLatif",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dulatif/falin-next.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "fs-extra": "^11.2.0",
     "giget": "^1.2.1",
