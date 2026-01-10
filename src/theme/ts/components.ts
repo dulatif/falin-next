@@ -351,6 +351,148 @@ export const createComponents = (mode: "light" | "dark"): Components => {
         },
       },
     },
+    MuiCheckbox: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          "&:not(.custom-icon)": {
+            padding: 0,
+            borderRadius: "6px",
+            width: "20px",
+            height: "20px",
+            margin: "9px",
+            transition: "all 0.2s ease-in-out",
+            "&.Mui-checked": {
+              color: colors.primary[600],
+            },
+            "& .MuiSvgIcon-root": {
+              display: "none",
+            },
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: `1px solid ${colors.neutral[300]}`,
+              borderRadius: "6px",
+              backgroundColor: bgPrimary,
+              transition: "all 0.2s ease-in-out",
+              boxSizing: "border-box",
+            },
+            "&:hover::before": {
+              borderColor: colors.primary[300],
+              boxShadow: `0 0 0 4px ${colors.primary[100]}`,
+            },
+            "&.Mui-checked::before": {
+              backgroundColor: colors.primary[600],
+              borderColor: colors.primary[600],
+            },
+            "&.Mui-checked:hover::before": {
+              boxShadow: `0 0 0 4px ${colors.primary[100]}`,
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              opacity: 0,
+              width: "6px",
+              height: "10px",
+              border: "solid white",
+              borderWidth: "0 2px 2px 0",
+              transform: "rotate(45deg) translate(0px, -1px)",
+              transition: "all 0.2s ease-in-out",
+              top: "50%",
+              left: "50%",
+              marginTop: "-6px",
+              marginLeft: "-3px",
+            },
+            "&.Mui-checked::after": {
+              opacity: 1,
+            },
+            "&.MuiCheckbox-indeterminate": {
+              "&::before": {
+                backgroundColor: colors.primary[600],
+                borderColor: colors.primary[600],
+              },
+              "&::after": {
+                opacity: 1,
+                width: "10px",
+                height: "0",
+                borderWidth: "2px 0 0 0",
+                transform: "rotate(0deg)",
+                top: "50%",
+                marginTop: "-1px",
+                marginLeft: "-5px",
+              },
+            },
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          "&:not(.custom-icon)": {
+            padding: 0,
+            width: "20px",
+            height: "20px",
+            margin: "9px",
+            transition: "all 0.2s ease-in-out",
+            "&.Mui-checked": {
+              color: colors.primary[600],
+            },
+            "& .MuiSvgIcon-root": {
+              display: "none",
+            },
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: `1px solid ${colors.neutral[300]}`,
+              borderRadius: "50%",
+              backgroundColor: bgPrimary,
+              transition: "all 0.2s ease-in-out",
+              boxSizing: "border-box",
+            },
+            "&:hover::before": {
+              borderColor: colors.primary[300],
+              boxShadow: `0 0 0 4px ${colors.primary[100]}`,
+            },
+            "&.Mui-checked::before": {
+              backgroundColor: colors.primary[600],
+              borderColor: colors.primary[600],
+            },
+            "&.Mui-checked:hover::before": {
+              boxShadow: `0 0 0 4px ${colors.primary[100]}`,
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "8px",
+              height: "8px",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%) scale(0)",
+              transition: "all 0.2s ease-in-out",
+            },
+            "&.Mui-checked::after": {
+              transform: "translate(-50%, -50%) scale(1)",
+            },
+          },
+        },
+      },
+    },
     MuiAlert: {
       styleOverrides: {
         root: {
@@ -430,6 +572,54 @@ export const createComponents = (mode: "light" | "dark"): Components => {
         standard: {
           ":focus": {
             backgroundColor: bgPrimary,
+          },
+        },
+      },
+    },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 42,
+          height: 26,
+          padding: 0,
+          "& .MuiSwitch-switchBase": {
+            padding: 0,
+            margin: 2,
+            transitionDuration: "300ms",
+            "&.Mui-checked": {
+              transform: "translateX(16px)",
+              color: "#fff",
+              "& + .MuiSwitch-track": {
+                backgroundColor: colors.primary[600],
+                opacity: 1,
+                border: 0,
+              },
+              "&.Mui-disabled + .MuiSwitch-track": {
+                opacity: 0.5,
+              },
+            },
+            "&.Mui-focusVisible .MuiSwitch-thumb": {
+              color: colors.primary[600],
+              border: "6px solid #fff",
+            },
+            "&.Mui-disabled .MuiSwitch-thumb": {
+              color:
+                mode === "light" ? colors.neutral[100] : colors.neutral[600],
+            },
+            "&.Mui-disabled + .MuiSwitch-track": {
+              opacity: mode === "light" ? 0.7 : 0.3,
+            },
+          },
+          "& .MuiSwitch-thumb": {
+            boxSizing: "border-box",
+            width: 22,
+            height: 22,
+          },
+          "& .MuiSwitch-track": {
+            borderRadius: 26 / 2,
+            backgroundColor: mode === "light" ? "#E9E9EA" : "#39393D",
+            opacity: 1,
+            transition: "background-color 500ms",
           },
         },
       },
@@ -710,6 +900,20 @@ export const createComponents = (mode: "light" | "dark"): Components => {
               },
             },
           },
+        },
+      },
+    },
+    MuiStepConnector: {
+      styleOverrides: {
+        line: {
+          borderColor: colors.neutral[200],
+        },
+      },
+    },
+    MuiStepContent: {
+      styleOverrides: {
+        root: {
+          borderColor: colors.neutral[200],
         },
       },
     },

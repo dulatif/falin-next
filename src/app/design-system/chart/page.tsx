@@ -1,4 +1,4 @@
-import { Container, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import {
   ChartAreaDemo,
   ChartColumnDemo,

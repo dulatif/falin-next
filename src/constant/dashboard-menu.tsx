@@ -23,9 +23,12 @@ import {
   Tabs,
   Textbox,
   TextT,
+  ToggleLeft,
+  User,
   UserCircle,
   WarningCircle,
   WaveSine,
+  XCircle,
 } from "phosphor-react";
 import { ReactNode } from "react";
 
@@ -135,6 +138,13 @@ export const listMenuForms: MenuItem[] = [
     path: "/design-system/upload-file",
     icon: <CloudArrowUp size={22} weight="bold" />,
   },
+  {
+    menuKey: "switch",
+    title: "Switch",
+    subtitle: "Switches toggle the state of a single setting on or off.",
+    path: "/design-system/switch",
+    icon: <ToggleLeft size={22} weight="bold" />,
+  },
 ];
 
 export const listComponents: MenuItem[] = [
@@ -203,8 +213,10 @@ export const listComponents: MenuItem[] = [
   {
     menuKey: "stepper",
     title: "Stepper",
+    subtitle:
+      "Steppers allow users to track progress through a sequence of steps.",
     path: "/design-system/stepper",
-    icon: <Table size={22} weight="bold" />,
+    icon: <Palette size={22} weight="bold" />,
   },
   {
     menuKey: "accordion",
@@ -286,6 +298,19 @@ export const listExtraUI: MenuItem[] = [
   },
 ];
 
-export const listPages: MenuItem[] = [];
+export const listPages: MenuItem[] = [
+  {
+    menuKey: "not-found",
+    title: "Not Found",
+    path: "/not-found",
+    icon: <XCircle size={22} weight="bold" />,
+  },
+  {
+    menuKey: "login",
+    title: "Login",
+    path: "/login",
+    icon: <User size={22} weight="bold" />,
+  },
+];
 
 export default dashboardMenu;

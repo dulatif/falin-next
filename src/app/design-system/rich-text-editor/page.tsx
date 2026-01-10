@@ -1,4 +1,4 @@
-import { Container, Divider, Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { Suspense } from "react";
 import { RichTextEditorBasicDemo } from "@/ui/design-system/rich-text-editor";
 

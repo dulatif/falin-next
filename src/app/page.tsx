@@ -21,7 +21,7 @@ export default function Home() {
       <Container maxWidth="lg">
         <Stack spacing={4} alignItems="center" textAlign="center">
           <Image
-            src="/favicon.ico"
+            src="/falin-logo.png"
             width={100}
             height={100}
             alt="Logo"

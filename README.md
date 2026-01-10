@@ -1,10 +1,15 @@
-# Next.js MUI Boilerplate
+<p align="center">
+  <img src="https://falin-next.vercel.app/falin-logo.png" alt="Logo" width="100" height="100" />
+</p>
 
-A production-ready Enterprise boilerplate for Next.js 15, Material UI v6, and TypeScript.
+
+# Falin Next
+
+A production-ready Enterprise boilerplate for Next.js 16, Material UI v6, and TypeScript.
 
 ## 🚀 Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Material UI v6 + SCSS Modules (Hybrid Approach)
 - **State Management**: Zustand

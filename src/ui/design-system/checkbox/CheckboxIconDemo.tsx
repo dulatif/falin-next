@@ -26,6 +26,7 @@ export default function CheckboxIconDemo() {
           <FormControlLabel
             control={
               <Checkbox
+                className="custom-icon"
                 icon={<Heart size={24} />}
                 checkedIcon={<Heart size={24} weight="fill" />}
               />
@@ -35,6 +36,7 @@ export default function CheckboxIconDemo() {
           <FormControlLabel
             control={
               <Checkbox
+                className="custom-icon"
                 icon={<Bookmark size={24} />}
                 checkedIcon={<Bookmark size={24} weight="fill" />}
               />
