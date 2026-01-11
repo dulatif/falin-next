@@ -54,10 +54,10 @@ export default function Home() {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   `;
-  /* const float = keyframes`
+  const float = keyframes`
     0%, 100% { transform: translateY(0) translateZ(30px); }
     50% { transform: translateY(-10px) translateZ(30px); }
-  `; */
+  `;
   const floatSlow = keyframes`
     0%, 100% { transform: translateY(0) translateZ(10px); }
     50% { transform: translateY(-5px) translateZ(10px); }
@@ -1030,65 +1030,768 @@ export default function Home() {
           py: 12,
           bgcolor: alpha(theme.palette.background.paper, 0.02),
           borderTop: `1px solid ${alpha(theme.palette.divider, 0.05)}`,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <Container maxWidth="lg">
-          <Typography
-            variant="h3"
-            align="center"
-            fontWeight="bold"
-            gutterBottom
-            sx={{ letterSpacing: "-1px", mb: 2 }}
+        <Container maxWidth="xl" sx={{ position: "relative" }}>
+          {/* 1. CPU / Motherboard Badge */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 0,
+              position: "relative",
+              zIndex: 2,
+            }}
           >
-            Powered By
-          </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color="text.secondary"
-            sx={{ mb: 8, maxWidth: 600, mx: "auto" }}
-          >
-            Built on a foundation of fast, production-grade tooling
-          </Typography>
+            <Box
+              sx={{
+                bgcolor: "grey.900",
+                color: "common.white",
+                fontFamily: "monospace",
+                fontWeight: "bold",
+                fontSize: 12,
+                py: 1.5,
+                px: 4,
+                borderRadius: 1,
+                boxShadow: theme.shadows[10],
+                display: "flex",
+                alignItems: "center",
+                gap: 1.5,
+                position: "relative",
+                border: "1px solid",
+                borderColor: "grey.700",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: -4,
+                  border: "2px solid",
+                  borderColor: alpha(theme.palette.grey[100], 0.1),
+                  borderRadius: 1.5,
+                },
+              }}
+            >
+              {/* Decorative Pins */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: -6,
+                  top: 8,
+                  bottom: 8,
+                  width: 4,
+                  background:
+                    "linear-gradient(to bottom, #fbbf24, #fef3c7, #f59e0b)",
+                  borderRadius: "4px 0 0 4px",
+                  opacity: 0.8,
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  right: -6,
+                  top: 8,
+                  bottom: 8,
+                  width: 4,
+                  background:
+                    "linear-gradient(to bottom, #fbbf24, #fef3c7, #f59e0b)",
+                  borderRadius: "0 4px 4px 0",
+                  opacity: 0.8,
+                }}
+              />
+              {/* LED Lights */}
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  bgcolor: "success.main",
+                  borderRadius: "50%",
+                  boxShadow: `0 0 10px ${theme.palette.success.main}`,
+                  animation: `${blink} 2s infinite`,
+                }}
+              />
+              POWERED BY
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  bgcolor: "success.main",
+                  borderRadius: "50%",
+                  boxShadow: `0 0 10px ${theme.palette.success.main}`,
+                  animation: `${blink} 2s infinite`,
+                  animationDelay: "1s",
+                }}
+              />
+              {/* Bottom Connector Stub */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: -4,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: 32,
+                  height: 4,
+                  bgcolor: "grey.700",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+            </Box>
+          </Box>
 
-          <Grid
-            container
-            spacing={4}
-            justifyContent="center"
-            alignItems="center"
+          {/* 2. Circuit Board Lines (SVG) */}
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: 96,
+              mt: -0.5,
+              mb: -0.5,
+              zIndex: 0,
+              display: { xs: "none", md: "block" },
+            }}
           >
-            {[
-              { name: "Next.js", icon: <Code size={32} /> },
-              { name: "MUI v6", icon: <PaintBrush size={32} /> },
-              { name: "TanStack Query", icon: <Lightning size={32} /> },
-              { name: "Zustand", icon: <ShieldCheck size={32} /> },
-            ].map((tech) => (
-              <Grid size={{ xs: 6, sm: 3, md: 2 }} key={tech.name}>
-                <Stack
-                  alignItems="center"
-                  spacing={2}
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 1200 100"
+              preserveAspectRatio="none"
+              style={{ overflow: "visible" }}
+            >
+              <defs>
+                <linearGradient
+                  id="circuit-gradient"
+                  x1="0%"
+                  y1="100%"
+                  x2="0%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={theme.palette.primary.light}
+                    stopOpacity="0"
+                  />
+                  <stop
+                    offset="50%"
+                    stopColor={theme.palette.primary.main}
+                    stopOpacity="1"
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={theme.palette.primary.light}
+                    stopOpacity="1"
+                  />
+                </linearGradient>
+              </defs>
+              {/* Paths for 4 items based on 1200px width. Centers: 150, 450, 750, 1050. Origin: 600. */}
+              {[
+                "M 175 100 V 50 H 580 V 0",
+                "M 470 100 V 50 H 590 V 0",
+                "M 740 100 V 50 H 610 V 0",
+                "M 1025 100 V 50 H 620 V 0",
+              ].map((d, i) => (
+                <g key={i}>
+                  <path
+                    d={d}
+                    fill="none"
+                    stroke={alpha(theme.palette.divider, 0.1)}
+                    strokeWidth="2"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                  <path
+                    d={d}
+                    fill="none"
+                    stroke="url(#circuit-gradient)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeDasharray="50 300"
+                    strokeDashoffset="350"
+                    vectorEffect="non-scaling-stroke"
+                    style={{
+                      animation: `circuitFlow 3s linear infinite`,
+                      animationDelay: `${i * 0.5}s`,
+                    }}
+                  />
+                  {/* Dot at bottom */}
+                  <circle
+                    cx={[175, 470, 740, 1025][i]}
+                    cy="100"
+                    r="4"
+                    fill={theme.palette.text.disabled}
+                  />
+                </g>
+              ))}
+            </svg>
+          </Box>
+
+          <style>
+            {`
+              @keyframes circuitFlow {
+                to { stroke-dashoffset: 0; }
+              }
+              @keyframes ripple {
+                0% { transform: scale(0.8); opacity: 1; }
+                100% { transform: scale(2); opacity: 0; }
+              }
+            `}
+          </style>
+
+          {/* 3. Tech Stack Grid */}
+          <Grid container spacing={4} sx={{ position: "relative", zIndex: 10 }}>
+            {/* TypeScript Card */}
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Box
+                className="card group"
+                sx={{ height: "100%", perspective: "1000px" }}
+              >
+                <Box
                   sx={{
-                    opacity: 0.6,
-                    transition: "opacity 0.2s",
-                    "&:hover": { opacity: 1 },
+                    position: "relative",
+                    borderRadius: 3,
+                    border: `1px solid ${theme.palette.divider}`,
+                    bgcolor: "background.paper",
+                    overflow: "hidden",
+                    transition: "all 0.5s",
+                    "&:hover": {
+                      boxShadow: `0 10px 40px -10px ${alpha("#3178C6", 0.3)}`,
+                      borderColor: "#3178C6",
+                    },
                   }}
                 >
                   <Box
                     sx={{
-                      p: 2,
-                      borderRadius: "50%",
-                      bgcolor: alpha(theme.palette.text.primary, 0.05),
-                      color: theme.palette.text.primary,
+                      display: { xs: "none", md: "block" },
+                      position: "absolute",
+                      top: -4,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 48,
+                      height: 4,
+                      bgcolor: "grey.300",
+                      borderRadius: "0 0 4px 4px",
+                      zIndex: 20,
+                    }}
+                  />
+
+                  <Box
+                    sx={{
+                      height: 200,
+                      position: "relative",
+                      overflow: "hidden",
+                      bgcolor: "grey.50",
+                      transition: "background-color 0.5s",
+                      ".card:hover &": { bgcolor: "#3178C6" },
                     }}
                   >
-                    {tech.icon}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        opacity: 0.3,
+                        backgroundImage: `radial-gradient(${alpha("#000", 0.1)} 1px, transparent 1px)`,
+                        backgroundSize: "20px 20px",
+                      }}
+                    />
+                    {/* Orbiting Text */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 40,
+                        left: 40,
+                        fontFamily: "monospace",
+                        fontSize: 10,
+                        color: "text.secondary",
+                        animation: `${float} 6s ease-in-out infinite`,
+                        ".card:hover &": { color: "blue.100" },
+                      }}
+                    >
+                      interface &#123;&#125;
+                    </Box>
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        bottom: 40,
+                        right: 40,
+                        fontFamily: "monospace",
+                        fontSize: 10,
+                        color: "text.secondary",
+                        animation: `${float} 6s ease-in-out infinite`,
+                        animationDelay: "1s",
+                        ".card:hover &": { color: "blue.100" },
+                      }}
+                    >
+                      type Props
+                    </Box>
+
+                    {/* Logo Block */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.5s",
+                        ".card:hover &": { transform: "scale(1.1)" },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 80,
+                          height: 80,
+                          bgcolor: "#3178C6",
+                          borderRadius: 2,
+                          boxShadow: theme.shadows[4],
+                          border: "2px solid rgba(255,255,255,0.2)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "white",
+                          fontWeight: "bold",
+                          fontSize: 32,
+                          transform: "translateZ(20px)",
+                          animation: `${float} 6s ease-in-out infinite`,
+                          transition: "all 0.5s",
+                          ".card:hover &": {
+                            bgcolor: "white",
+                            color: "#3178C6",
+                          },
+                        }}
+                      >
+                        TS
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            inset: 0,
+                            background:
+                              "linear-gradient(to top right, rgba(255,255,255,0.2), transparent)",
+                            borderRadius: 2,
+                            pointerEvents: "none",
+                          }}
+                        />
+                      </Box>
+                    </Box>
                   </Box>
-                  <Typography variant="subtitle2" fontWeight="600">
-                    {tech.name}
-                  </Typography>
-                </Stack>
-              </Grid>
-            ))}
+                  <Box sx={{ p: 3 }}>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                      TypeScript
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Statically typed superset of JavaScript.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* Next.js Card */}
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Box
+                className="card group"
+                sx={{ height: "100%", perspective: "1000px" }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+                    borderRadius: 3,
+                    border: `1px solid ${theme.palette.divider}`,
+                    bgcolor: "background.paper",
+                    overflow: "hidden",
+                    transition: "all 0.5s",
+                    "&:hover": {
+                      boxShadow: theme.shadows[10],
+                      borderColor: "common.black",
+                    },
+                  }}
+                >
+                  {/* Top connector node (desktop only) */}
+                  <Box
+                    sx={{
+                      display: { xs: "none", md: "block" },
+                      position: "absolute",
+                      top: -4,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 48,
+                      height: 4,
+                      bgcolor: "grey.300",
+                      borderRadius: "0 0 4px 4px",
+                      zIndex: 20,
+                    }}
+                  />
+
+                  <Box
+                    sx={{
+                      height: 200,
+                      position: "relative",
+                      overflow: "hidden",
+                      bgcolor: "grey.50",
+                      transition: "background-color 0.5s",
+                      ".card:hover &": { bgcolor: "common.black" },
+                    }}
+                  >
+                    {/* Stream Lines */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        opacity: 0,
+                        transition: "opacity 0.5s",
+                        ".card:hover &": { opacity: 0.3 },
+                      }}
+                    >
+                      {[1, 2, 3].map((i) => (
+                        <Box
+                          key={i}
+                          sx={{
+                            position: "absolute",
+                            top: `${i * 25}%`,
+                            left: 0,
+                            width: "100%",
+                            height: 1,
+                            background:
+                              "linear-gradient(90deg, transparent, #fff, transparent)",
+                            animation: `${streamRight} 1.5s linear infinite`,
+                            animationDelay: `${i * 0.2}s`,
+                          }}
+                        />
+                      ))}
+                    </Box>
+                    {/* 3D Logo */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.7s",
+                        ".card:hover &": { transform: "rotateY(12deg)" },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 80,
+                          height: 80,
+                          bgcolor: "common.white",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: theme.shadows[4],
+                          transform: "translateZ(30px)",
+                          transition: "all 0.5s",
+                          ".card:hover &": {
+                            bgcolor: "common.black",
+                            border: "1px solid rgba(255,255,255,0.2)",
+                          },
+                        }}
+                      >
+                        <Code
+                          size={40}
+                          weight="bold"
+                          color={theme.palette.text.primary}
+                          style={{ transition: "color 0.5s" }}
+                          className="icon"
+                        />
+                        <Box
+                          component="span"
+                          sx={{
+                            position: "absolute",
+                            inset: 0,
+                            bgcolor: "common.black",
+                            opacity: 0,
+                            transition: "opacity 0.5s",
+                            borderRadius: "50%",
+                            ".card:hover &": { opacity: 1 },
+                            zIndex: -1,
+                          }}
+                        />
+                        <style>{`.card:hover .icon { color: white !important; }`}</style>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <Box sx={{ p: 3 }}>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                      Next.js
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      The React Framework for the Web.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* MUI Card */}
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Box
+                className="card"
+                sx={{ height: "100%", perspective: "1000px" }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+                    borderRadius: 3,
+                    border: `1px solid ${theme.palette.divider}`,
+                    bgcolor: "background.paper",
+                    overflow: "hidden",
+                    transition: "all 0.5s",
+                    "&:hover": {
+                      boxShadow: `0 10px 40px -10px ${alpha("#007FFF", 0.3)}`,
+                      borderColor: "#007FFF",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: { xs: "none", md: "block" },
+                      position: "absolute",
+                      top: -4,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 48,
+                      height: 4,
+                      bgcolor: "grey.300",
+                      borderRadius: "0 0 4px 4px",
+                      zIndex: 20,
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      height: 200,
+                      position: "relative",
+                      overflow: "hidden",
+                      bgcolor: "grey.50",
+                      transition: "background-color 0.5s",
+                      ".card:hover &": { bgcolor: "#007FFF" },
+                    }}
+                  >
+                    {/* Ripple */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        opacity: 0,
+                        transition: "opacity 0.5s",
+                        ".card:hover &": { opacity: 0.2 },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          width: 160,
+                          height: 160,
+                          border: "1px solid white",
+                          borderRadius: "50%",
+                          animation: `ripple 3s linear infinite`,
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          width: 160,
+                          height: 160,
+                          border: "1px solid white",
+                          borderRadius: "50%",
+                          animation: `ripple 3s linear infinite`,
+                          animationDelay: "1.5s",
+                        }}
+                      />
+                    </Box>
+                    {/* Stacked Layers */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.7s",
+                        ".card:hover &": {
+                          transform: "rotateX(12deg) rotateY(12deg)",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 64,
+                          height: 64,
+                          bgcolor: alpha("#007FFF", 0.2),
+                          borderRadius: 2,
+                          position: "absolute",
+                          transform: "translateZ(10px) translate(16px, 16px)",
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          width: 64,
+                          height: 64,
+                          bgcolor: alpha("#007FFF", 0.5),
+                          borderRadius: 2,
+                          position: "absolute",
+                          transform: "translateZ(20px) translate(8px, 8px)",
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          width: 64,
+                          height: 64,
+                          bgcolor: "#007FFF",
+                          borderRadius: 2,
+                          position: "absolute",
+                          transform: "translateZ(30px)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          ".card:hover &": { bgcolor: "white" },
+                        }}
+                      >
+                        <PaintBrush
+                          size={32}
+                          weight="fill"
+                          color="white"
+                          style={{ transition: "color 0.5s" }}
+                          className="mui-icon"
+                        />
+                        <style>{`.card:hover .mui-icon { color: #007FFF !important; }`}</style>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <Box sx={{ p: 3 }}>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                      MUI v6
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Comprehensive UI component library.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
+
+            {/* TanStack Query Card */}
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Box
+                className="card"
+                sx={{ height: "100%", perspective: "1000px" }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+                    borderRadius: 3,
+                    border: `1px solid ${theme.palette.divider}`,
+                    bgcolor: "background.paper",
+                    overflow: "hidden",
+                    transition: "all 0.5s",
+                    "&:hover": {
+                      boxShadow: `0 10px 40px -10px ${alpha("#FF4154", 0.3)}`,
+                      borderColor: "#FF4154",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: { xs: "none", md: "block" },
+                      position: "absolute",
+                      top: -4,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 48,
+                      height: 4,
+                      bgcolor: "grey.300",
+                      borderRadius: "0 0 4px 4px",
+                      zIndex: 20,
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      height: 200,
+                      position: "relative",
+                      overflow: "hidden",
+                      bgcolor: "grey.50",
+                      transition: "background-color 0.5s",
+                      ".card:hover &": { bgcolor: "#FF4154" },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        backgroundImage: `radial-gradient(${alpha("#000", 0.1)} 1px, transparent 1px)`,
+                        backgroundSize: "20px 20px",
+                        opacity: 0.3,
+                      }}
+                    />
+                    {/* Floating Elements */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.7s",
+                        ".card:hover &": { transform: "scale(1.1)" },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: 40,
+                          left: 40,
+                          color: "text.secondary",
+                          fontSize: 10,
+                          fontFamily: "monospace",
+                          animation: `${float} 4s ease-in-out infinite`,
+                          ".card:hover &": { color: "white" },
+                        }}
+                      >
+                        useQuery()
+                      </Box>
+                      <Box
+                        sx={{
+                          width: 80,
+                          height: 80,
+                          bgcolor: "#FF4154",
+                          borderRadius: 2,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          transform: "translateZ(30px)",
+                          boxShadow: theme.shadows[4],
+                          border: "2px solid rgba(255,255,255,0.2)",
+                          animation: `${float} 6s ease-in-out infinite`,
+                          ".card:hover &": { bgcolor: "white" },
+                        }}
+                      >
+                        <Lightning
+                          size={40}
+                          weight="fill"
+                          color="white"
+                          className="query-icon"
+                        />
+                        <style>{`.card:hover .query-icon { color: #FF4154 !important; }`}</style>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <Box sx={{ p: 3 }}>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                      TanStack Query
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Powerful asynchronous state management.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
           </Grid>
         </Container>
       </Box>
