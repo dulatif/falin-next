@@ -38,8 +38,8 @@ export function FeatureMainCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       onMouseMove={handleMouseMove}
+      className="card"
       sx={{
-        group: "card",
         position: "relative",
         overflow: "hidden",
         borderRadius: 4,
@@ -56,7 +56,8 @@ export function FeatureMainCard({
       }}
     >
       {/* Flashlight Effect */}
-      <motion.div
+      <Box
+        component={motion.div}
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -66,7 +67,6 @@ export function FeatureMainCard({
             )
           `,
         }}
-        className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         sx={{
           position: "absolute",
           inset: 0,

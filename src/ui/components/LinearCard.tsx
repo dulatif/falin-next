@@ -45,7 +45,8 @@ export function LinearCard({ title, description, icon }: LinearCardProps) {
       }}
     >
       {/* Flashlight Effect */}
-      <motion.div
+      <Box
+        component={motion.div}
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -55,7 +56,6 @@ export function LinearCard({ title, description, icon }: LinearCardProps) {
             )
           `,
         }}
-        className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         sx={{
           position: "absolute",
           inset: 0,
