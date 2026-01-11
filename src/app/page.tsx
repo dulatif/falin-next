@@ -1253,7 +1253,6 @@ export default function Home() {
                     transition: "all 0.5s",
                     "&:hover": {
                       boxShadow: `0 10px 40px -10px ${alpha("#3178C6", 0.3)}`,
-                      borderColor: "#3178C6",
                     },
                   }}
                 >
@@ -1301,7 +1300,7 @@ export default function Home() {
                         fontSize: 10,
                         color: "text.secondary",
                         animation: `${float} 6s ease-in-out infinite`,
-                        ".card:hover &": { color: "blue.100" },
+                        ".card:hover &": { color: "common.white" },
                       }}
                     >
                       interface &#123;&#125;
@@ -1316,7 +1315,7 @@ export default function Home() {
                         color: "text.secondary",
                         animation: `${float} 6s ease-in-out infinite`,
                         animationDelay: "1s",
-                        ".card:hover &": { color: "blue.100" },
+                        ".card:hover &": { color: "common.white" },
                       }}
                     >
                       type Props
@@ -1400,7 +1399,6 @@ export default function Home() {
                     transition: "all 0.5s",
                     "&:hover": {
                       boxShadow: theme.shadows[10],
-                      borderColor: "common.black",
                     },
                   }}
                 >
@@ -1492,8 +1490,13 @@ export default function Home() {
                           size={40}
                           weight="bold"
                           color={theme.palette.text.primary}
-                          style={{ transition: "color 0.5s" }}
-                          className="icon"
+                          sx={{
+                            transition: "color 0.5s",
+                            ".card:hover &": { color: "white !important" },
+                            "[data-theme='dark'] &": {
+                              color: "white !important",
+                            },
+                          }}
                         />
                         <Box
                           component="span"
@@ -1508,7 +1511,6 @@ export default function Home() {
                             zIndex: -1,
                           }}
                         />
-                        <style>{`.card:hover .icon { color: white !important; }`}</style>
                       </Box>
                     </Box>
                   </Box>
@@ -1540,7 +1542,6 @@ export default function Home() {
                     transition: "all 0.5s",
                     "&:hover": {
                       boxShadow: `0 10px 40px -10px ${alpha("#007FFF", 0.3)}`,
-                      borderColor: "#007FFF",
                     },
                   }}
                 >
@@ -1656,10 +1657,12 @@ export default function Home() {
                           size={32}
                           weight="fill"
                           color="white"
-                          style={{ transition: "color 0.5s" }}
+                          sx={{
+                            transition: "color 0.5s",
+                            ".card:hover &": { color: "#007FFF !important" },
+                          }}
                           className="mui-icon"
                         />
-                        <style>{`.card:hover .mui-icon { color: #007FFF !important; }`}</style>
                       </Box>
                     </Box>
                   </Box>
@@ -1691,7 +1694,6 @@ export default function Home() {
                     transition: "all 0.5s",
                     "&:hover": {
                       boxShadow: `0 10px 40px -10px ${alpha("#FF4154", 0.3)}`,
-                      borderColor: "#FF4154",
                     },
                   }}
                 >
@@ -1776,8 +1778,11 @@ export default function Home() {
                           weight="fill"
                           color="white"
                           className="query-icon"
+                          sx={{
+                            transition: "color 0.5s",
+                            ".card:hover &": { color: "#FF4154 !important" },
+                          }}
                         />
-                        <style>{`.card:hover .query-icon { color: #FF4154 !important; }`}</style>
                       </Box>
                     </Box>
                   </Box>
