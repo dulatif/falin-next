@@ -1,0 +1,93 @@
+@use "@/theme/scss/spacing" as *;
+@use "@/theme/scss/colors" as *;
+
+.Calendar {
+  // FullCalendar base styles
+  & :global(.fc) {
+    font-family: var(--font-family);
+    --fc-border-color: var(--divider-color);
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: var(--bg-default);
+    --fc-list-event-hover-bg-color: var(--action-hover);
+    --fc-today-bg-color: var(--action-selected);
+  }
+
+  & :global(.fc-col-header-cell) {
+    background-color: var(--bg-default);
+    padding: $space-2;
+    border-color: var(--divider-color);
+  }
+
+  & :global(.fc-daygrid-day) {
+    border-color: var(--divider-color);
+  }
+
+  & :global(.fc-day.fc-daygrid-day.fc-day-today) {
+    background-color: $neutral-100 !important;
+  }
+  & :global(.fc-event) {
+    border: none;
+    padding: $space-1 $space-3 !important;
+    border-radius: $space-1 !important;
+
+    & :global(.fc-event-title) {
+      font-weight: 500;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      left: 6px;
+      width: 3px;
+      border-radius: 3px;
+      z-index: 1000;
+    }
+    &:global(.fc-event-primary) {
+      background-color: $primary-100 !important;
+      & :global(.fc-event-title) {
+        color: $primary-700 !important;
+      }
+      &::before {
+        background-color: $primary-400 !important;
+      }
+    }
+    &:global(.fc-event-success) {
+      background-color: $success-100 !important;
+      & :global(.fc-event-title) {
+        color: $success-700 !important;
+      }
+      &::before {
+        background-color: $success-400 !important;
+      }
+    }
+    &:global(.fc-event-warning) {
+      background-color: $warning-100 !important;
+      & :global(.fc-event-title) {
+        color: $warning-700 !important;
+      }
+      &::before {
+        background-color: $warning-400 !important;
+      }
+    }
+    &:global(.fc-event-info) {
+      background-color: $info-100 !important;
+      & :global(.fc-event-title) {
+        color: $info-700 !important;
+      }
+      &::before {
+        background-color: $info-400 !important;
+      }
+    }
+    &:global(.fc-event-danger) {
+      background-color: $danger-100 !important;
+      & :global(.fc-event-title) {
+        color: $danger-700 !important;
+      }
+      &::before {
+        background-color: $danger-400 !important;
+      }
+    }
+  }
+}

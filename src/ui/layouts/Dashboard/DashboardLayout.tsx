@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   MenuItem,
-  MenuList,
   Stack,
   Typography,
 } from "@mui/material";
@@ -45,16 +44,21 @@ const MenuItems: React.FC<{ menus: DashboardMenuItem[] }> = ({ menus }) => {
   const pathname = usePathname();
 
   return menus.map((item) => (
-    <Link key={item.path} href={item.path}>
-      <MenuItem
-        className={`${classes.MenuItem} ${
-          pathname === item.path ? classes.Active : ""
-        }`}
-      >
-        <span className={classes.MenuIcon}>{item.icon}</span>
-        <Typography>{item.title}</Typography>
-      </MenuItem>
-    </Link>
+    <MenuItem
+      key={item.path}
+      component={Link}
+      href={item.path}
+      className={`${classes.MenuItem} ${
+        pathname === item.path ? classes.Active : ""
+      }`}
+      aria-current={pathname === item.path ? "page" : undefined}
+      role="link"
+    >
+      <span className={classes.MenuIcon} aria-hidden="true">
+        {item.icon}
+      </span>
+      <Typography>{item.title}</Typography>
+    </MenuItem>
   ));
 };
 
@@ -124,6 +128,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             size="lg"
             onClick={() => setShowSidebar(!showSidebar)}
             className={classes.SidebarToggle}
+            aria-label={showSidebar ? "Close sidebar" : "Open sidebar"}
+            aria-controls="sidebar-menu"
+            aria-expanded={showSidebar}
           >
             <Render in={!showSidebar}>
               <List
@@ -145,7 +152,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <span>FALIN NEXT</span>
           </div>
         </Box>
-        <MenuList component={"nav"} className={classes.MenuContainer}>
+        <Box
+          id="sidebar-menu"
+          component="nav"
+          className={classes.MenuContainer}
+        >
           <MenuItems menus={dashboardMenu} />
           <MenuTitle title="Customization" />
           <MenuItems menus={listCustomization} />
@@ -157,7 +168,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <MenuItems menus={listExtraUI} />
           <MenuTitle title="Pages" />
           <MenuItems menus={listPages} />
-        </MenuList>
+        </Box>
         <Stack direction={"column"} className={classes.SidebarFooter}>
           <Button
             color="error"
@@ -165,6 +176,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             onClick={handleLogout}
             className={classes.LogoutButton}
             data-shape={showSidebar ? "text" : "icon"}
+            aria-label="Logout"
             startIcon={
               showSidebar && (
                 <SignOut
@@ -210,7 +222,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </Typography>
           </Box>
           <Stack direction="row" gap={2}>
-            <Button data-shape="icon" color="inherit" variant="text">
+            <Button
+              data-shape="icon"
+              color="inherit"
+              variant="text"
+              aria-label="Notifications"
+            >
               <Bell size={22} weight="duotone" />
             </Button>
             <ThemeToggle />
