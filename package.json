@@ -50,6 +50,7 @@
     "dayjs": "^1.11.13",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.25.0",
     "isomorphic-dompurify": "^2.34.0",
     "jwt-decode": "^4.0.0",
     "material-react-table": "^3.2.1",
