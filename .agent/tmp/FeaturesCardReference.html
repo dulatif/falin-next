@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next.js Feature Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* --- Animations --- */
+
+        /* Data Stream */
+        @keyframes stream-right {
+            0% { transform: translateX(-100%); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+        @keyframes stream-left {
+            0% { transform: translateX(100%); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(-100%); opacity: 0; }
+        }
+        .animate-stream-right { animation: stream-right 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        .animate-stream-left { animation: stream-left 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+        /* Cursor Blink */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .animate-blink { animation: blink 1s step-end infinite; }
+
+        /* Floating Effect */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateZ(30px); }
+            50% { transform: translateY(-10px) translateZ(30px); }
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) translateZ(10px); }
+            50% { transform: translateY(-5px) translateZ(10px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+
+        /* Grid Movement */
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+        .animate-grid { animation: grid-move 3s linear infinite; }
+
+        /* CSS Variables Scroll */
+        @keyframes scroll-up {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .animate-scroll { animation: scroll-up 15s linear infinite; }
+
+        /* --- Utilities --- */
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+
+        .translate-z-10 { transform: translateZ(10px); }
+        .translate-z-20 { transform: translateZ(20px); }
+        .translate-z-30 { transform: translateZ(30px); }
+        .translate-z-40 { transform: translateZ(40px); }
+        .translate-z-50 { transform: translateZ(50px); }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-6 selection:bg-blue-100 selection:text-blue-900">
+
+    <div class="max-w-7xl w-full mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-20 space-y-4">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">What's in Next.js?</h2>
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-medium">
+                Everything you need to build great products on the web.
+            </p>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Card 1: Theme System (Layered System Architecture) -->
+            <div class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 transition-all duration-500 perspective-1000 z-0">
+                <!-- Illustration Area -->
+                <div class="h-64 relative overflow-hidden transition-colors duration-700 bg-gray-50 group-hover:bg-[#0f172a]">
+
+                    <!-- Layer 1: Code Background (The System) -->
+                    <div class="absolute inset-0 opacity-20 group-hover:opacity-10 pointer-events-none overflow-hidden">
+                        <div class="flex flex-col text-[10px] font-mono text-gray-500 p-4 gap-2 animate-scroll">
+                            <span>:root {</span>
+                            <span class="pl-4">--foreground: #000;</span>
+                            <span class="pl-4">--background: #fff;</span>
+                            <span class="pl-4">--primary: #0070f3;</span>
+                            <span class="pl-4">--accents-1: #fafafa;</span>
+                            <span class="pl-4">--accents-2: #eaeaea;</span>
+                            <span>}</span>
+                            <span>[data-theme='dark'] {</span>
+                            <span class="pl-4">--foreground: #fff;</span>
+                            <span class="pl-4">--background: #000;</span>
+                            <span class="pl-4">--primary: #3291ff;</span>
+                            <span>}</span>
+                            <!-- Repeat for smooth scroll loop -->
+                            <span>:root {</span>
+                            <span class="pl-4">--foreground: #000;</span>
+                            <span class="pl-4">--background: #fff;</span>
+                            <span class="pl-4">--primary: #0070f3;</span>
+                            <span class="pl-4">--accents-1: #fafafa;</span>
+                            <span>}</span>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2: 3D Scene -->
+                    <div class="absolute inset-0 flex items-center justify-center preserve-3d group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Floating Swatches (Design Tokens) - Left -->
+                        <div class="absolute left-6 top-12 flex flex-col gap-3 translate-z-20 transition-all duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-white shadow-lg border border-gray-100 flex items-center justify-center group-hover:bg-[#333] group-hover:border-[#444] transition-colors duration-500">
+                                <div class="w-6 h-6 rounded bg-blue-500"></div>
+                            </div>
+                            <div class="w-10 h-10 rounded-lg bg-white shadow-lg border border-gray-100 flex items-center justify-center group-hover:bg-[#333] group-hover:border-[#444] transition-colors duration-500 delay-75">
+                                <div class="w-6 h-6 rounded bg-purple-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Swatches (Design Tokens) - Right -->
+                        <div class="absolute right-6 bottom-12 flex flex-col gap-3 translate-z-10 transition-all duration-500 group-hover:translate-x-2 group-hover:translate-y-2">
+                             <div class="w-12 h-8 rounded-lg bg-white shadow-md border border-gray-100 flex items-center justify-center group-hover:bg-[#333] group-hover:border-[#444] transition-colors duration-500 delay-100">
+                                <div class="w-full h-1 bg-gray-200 group-hover:bg-gray-600 rounded mx-2"></div>
+                             </div>
+                        </div>
+
+                        <!-- Main Toggle Switch -->
+                        <div class="relative translate-z-50">
+                            <!-- Glow -->
+                            <div class="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full"></div>
+
+                            <!-- Switch Body -->
+                            <div class="w-32 h-16 bg-white/90 backdrop-blur-md rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/50 flex items-center p-1.5 transition-all duration-500 group-hover:bg-gray-800/90 group-hover:border-gray-700 relative overflow-hidden">
+
+                                <!-- Internal texture -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
+
+                                <!-- Sliding Knob -->
+                                <div class="w-12 h-12 bg-white rounded-full shadow-lg transform transition-transform duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) group-hover:translate-x-16 flex items-center justify-center z-10">
+                                    <!-- Icon inside knob -->
+                                    <div class="text-amber-500 group-hover:hidden transition-all duration-300">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                    </div>
+                                    <div class="text-blue-500 hidden group-hover:block transition-all duration-300">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 relative z-20 bg-white">
+                    <h3 class="font-bold text-xl mb-3 text-gray-900">Theme System</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        A complete design system architecture. Define your tokens, swatches, and variables once, and let Next.js handle the propagation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2: State & Data (Layered Waterfall Architecture) -->
+            <div class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-200 transition-all duration-500 perspective-1000 z-0">
+                <!-- Illustration Area -->
+                <div class="h-64 relative overflow-hidden bg-gray-50 flex items-center justify-center">
+
+                    <!-- Layer 1: Moving Grid Background -->
+                    <div class="absolute inset-0 bg-grid-pattern opacity-[0.3] animate-grid"></div>
+
+                    <!-- Layer 2: Waterfall Graph (Background Context) -->
+                    <div class="absolute bottom-0 left-0 right-0 h-32 px-8 flex items-end justify-between opacity-10 gap-2 transform skew-x-12 translate-z-10">
+                        <div class="w-full bg-purple-400 h-[40%] rounded-t-md"></div>
+                        <div class="w-full bg-purple-400 h-[70%] rounded-t-md"></div>
+                        <div class="w-full bg-blue-400 h-[50%] rounded-t-md"></div>
+                        <div class="w-full bg-purple-400 h-[30%] rounded-t-md"></div>
+                        <div class="w-full bg-blue-400 h-[80%] rounded-t-md"></div>
+                    </div>
+
+                    <!-- Layer 3: Main 3D Scene -->
+                    <div class="relative w-full h-full flex items-center justify-between px-10 preserve-3d transform transition-transform duration-700 group-hover:rotate-x-3 group-hover:rotate-y-3">
+
+                        <!-- Server Block (Isometric) -->
+                        <div class="relative z-10 translate-z-20 group-hover:translate-z-40 transition-transform duration-500">
+                             <div class="w-20 h-24 relative">
+                                <!-- Top Face -->
+                                <div class="absolute w-full h-full bg-gray-100 rounded-lg border border-gray-300 shadow-xl flex flex-col items-center justify-center gap-2 z-20">
+                                    <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+                                    <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+                                    <div class="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+                                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <!-- Side Depth -->
+                                <div class="absolute top-1 left-1 w-full h-full bg-gray-200 rounded-lg -z-10"></div>
+                             </div>
+                             <div class="text-center mt-3">
+                                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest bg-white/80 px-2 py-1 rounded shadow-sm">Server</span>
+                             </div>
+                        </div>
+
+                        <!-- Data Stream Layer -->
+                        <div class="absolute left-28 right-28 h-20 flex flex-col justify-center space-y-4 transform translate-z-10">
+                            <!-- Stream 1 -->
+                            <div class="h-[2px] w-full bg-gray-200 overflow-hidden relative rounded-full">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400 to-transparent w-1/3 animate-stream-right"></div>
+                            </div>
+                            <!-- Stream 2 -->
+                            <div class="h-[2px] w-full bg-gray-200 overflow-hidden relative rounded-full">
+                                <div class="absolute inset-0 bg-gradient-to-l from-transparent via-purple-400 to-transparent w-1/3 animate-stream-left delay-75"></div>
+                            </div>
+                            <!-- Floating JSON Particles -->
+                            <div class="absolute top-0 left-1/3 text-[8px] font-mono text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-float-slow">{data}</div>
+                            <div class="absolute bottom-0 right-1/3 text-[8px] font-mono text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-float-slow delay-100">&lt;HTML/&gt;</div>
+                        </div>
+
+                        <!-- Client Block (Isometric) -->
+                        <div class="relative z-10 translate-z-20 group-hover:translate-z-40 transition-transform duration-500 delay-75">
+                            <div class="w-20 h-24 relative">
+                                <!-- Top Face -->
+                                <div class="absolute w-full h-full bg-white rounded-lg border border-gray-200 shadow-xl flex flex-col p-2 z-20">
+                                    <div class="flex gap-1 mb-2">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                                    </div>
+                                    <div class="w-full h-8 bg-blue-50 rounded mb-1"></div>
+                                    <div class="w-2/3 h-2 bg-gray-100 rounded"></div>
+                                </div>
+                                <!-- Side Depth -->
+                                <div class="absolute top-1 left-1 w-full h-full bg-gray-100 rounded-lg -z-10"></div>
+                            </div>
+                             <div class="text-center mt-3">
+                                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest bg-white/80 px-2 py-1 rounded shadow-sm">Client</span>
+                             </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="p-8 relative z-20 bg-white">
+                    <h3 class="font-bold text-xl mb-3 text-gray-900">State & Data</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Hybrid rendering allows you to fetch data on the server or client, optimizing waterfall requests and interaction.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: Type Safety (Layered Compilation) -->
+            <div class="group relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 transition-all duration-500 perspective-1000 z-0">
+                <!-- Illustration Area -->
+                <div class="h-64 relative bg-gray-50 flex items-center justify-center overflow-hidden">
+
+                    <!-- Layer 1: Abstract Shapes (Safety Net) -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                        <div class="w-64 h-64 border border-blue-500 rounded-full transform scale-50 group-hover:scale-100 transition-transform duration-1000"></div>
+                        <div class="absolute w-48 h-48 border border-purple-500 rounded-full transform scale-50 group-hover:scale-100 transition-transform duration-1000 delay-100"></div>
+                    </div>
+
+                    <!-- Layer 2: Terminal Window (Behind) -->
+                    <div class="absolute top-10 left-12 w-48 h-32 bg-gray-900 rounded-lg border border-gray-700 shadow-lg transform -rotate-6 translate-z-10 group-hover:-translate-y-4 transition-transform duration-500">
+                        <div class="p-3 font-mono text-[8px] text-green-400">
+                            > npm run build<br>
+                            <span class="text-gray-500">...</span><br>
+                            > compiled successfully<br>
+                            > type check passed
+                        </div>
+                    </div>
+
+                    <!-- Layer 3: Code Editor Window (Main) -->
+                    <div class="relative w-56 bg-[#1e1e1e] rounded-lg shadow-2xl border border-gray-800 preserve-3d animate-float z-20 transform rotate-2 group-hover:rotate-0 transition-all duration-500">
+                        <!-- Title Bar -->
+                        <div class="bg-[#252526] px-3 py-2 flex items-center justify-between border-b border-[#333]">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                            </div>
+                            <span class="text-[9px] font-mono text-gray-400">user.ts</span>
+                        </div>
+
+                        <!-- Editor Content -->
+                        <div class="p-4 font-mono text-[10px] leading-relaxed relative group-hover:bg-[#1e1e1e] transition-colors">
+                            <div class="ml-2">
+                                <div class="flex flex-wrap gap-x-1.5">
+                                    <span class="text-[#c586c0]">interface</span>
+                                    <span class="text-[#4ec9b0]">User</span>
+                                    <span class="text-[#ffd700]">{</span>
+                                </div>
+                                <div class="pl-2 group/line relative">
+                                    <span class="text-[#9cdcfe]">id</span><span class="text-[#d4d4d4]">:</span>
+                                    <span class="text-[#4ec9b0]">string</span><span class="text-[#d4d4d4];">;</span>
+                                </div>
+                                <div class="pl-2 flex items-center">
+                                    <span class="text-[#9cdcfe]">role</span><span class="text-[#d4d4d4]">:</span>&nbsp;
+                                    <span class="text-[#ce9178]">'admin'</span><span class="text-[#d4d4d4];">;</span>
+                                    <div class="w-1.5 h-3 bg-blue-400 ml-0.5 animate-blink"></div>
+                                </div>
+                                <div class="text-[#ffd700]">}</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge (3D) -->
+                        <div class="absolute -right-4 -bottom-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg translate-z-50 transform rotate-12 group-hover:rotate-0 transition-transform duration-300 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Safe
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 relative z-20 bg-white">
+                    <h3 class="font-bold text-xl mb-3 text-gray-900">Type Safety</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Built-in TypeScript support ensures your application is robust, improving developer experience and preventing bugs.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
