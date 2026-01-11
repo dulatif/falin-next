@@ -73,7 +73,7 @@ export function LandingNavbar() {
                     href="#"
                     variant="text"
                     color="inherit"
-                    size="small"
+                    size="sm"
                     sx={{
                       color: "text.secondary",
                       fontSize: "0.9rem",
@@ -93,17 +93,13 @@ export function LandingNavbar() {
             <Stack direction="row" spacing={2} alignItems="center">
               <ThemeToggle />
               <Link href="/design-system/dashboard">
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{ borderRadius: 1.5 }}
-                >
+                <Button variant="outlined" size="sm" sx={{ borderRadius: 1.5 }}>
                   Dashboard
                 </Button>
               </Link>
               <Button
                 variant="contained"
-                size="small"
+                size="sm"
                 href="https://github.com/dulatif/falin-next"
                 target="_blank"
                 sx={{ borderRadius: 1.5 }}

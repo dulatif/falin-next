@@ -1,24 +1,31 @@
 "use client";
 
 import {
+  alpha,
   Box,
   Button,
   Container,
   Grid,
   Stack,
   Typography,
-  alpha,
   useTheme,
 } from "@mui/material";
 import {
   ArrowRight,
+  Calendar,
+  ChartBar,
   Code,
   Copy,
+  Globe,
   Lightning,
   PaintBrush,
   ShieldCheck,
+  Table,
+  TextAa,
+  ToggleLeft,
 } from "phosphor-react";
 import { useState } from "react";
+import { FeatureMainCard } from "@/ui/components/FeatureMainCard";
 import { LandingNavbar } from "@/ui/components/LandingNavbar";
 import { LinearCard } from "@/ui/components/LinearCard";
 
@@ -127,7 +134,7 @@ export default function Home() {
             <Stack direction="row" spacing={2} pt={2}>
               <Button
                 variant="contained"
-                size="large"
+                size="lg"
                 endIcon={<ArrowRight />}
                 sx={{
                   borderRadius: 2,
@@ -141,7 +148,7 @@ export default function Home() {
               </Button>
               <Button
                 variant="outlined"
-                size="large"
+                size="lg"
                 sx={{
                   borderRadius: 2,
                   px: 4,
@@ -208,30 +215,150 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* Features Section */}
+      {/* Main Features Section */}
+      <Container maxWidth="lg" sx={{ py: 16 }}>
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          align="center"
+          gutterBottom
+          sx={{ mb: 8, letterSpacing: "-1.5px" }}
+        >
+          Core Capabilities
+        </Typography>
+        <Grid container spacing={3} alignItems="stretch">
+          {/* Theme System */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex" }}>
+            <FeatureMainCard
+              title="Theme System"
+              description="Comprehensive light/dark mode support with token-based design system powered by MUI v6."
+            >
+              {/* Abstract Palette Representation */}
+              <Box sx={{ position: "relative", width: 120, height: 120 }}>
+                <PaintBrush
+                  size={120}
+                  weight="duotone"
+                  color={theme.palette.primary.main}
+                  style={{ opacity: 0.8 }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: -10,
+                    right: -10,
+                    p: 1,
+                    borderRadius: "50%",
+                    bgcolor: theme.palette.background.paper,
+                    boxShadow: theme.shadows[4],
+                  }}
+                >
+                  <ToggleLeft
+                    size={32}
+                    weight="fill"
+                    color={theme.palette.secondary.main}
+                  />
+                </Box>
+              </Box>
+            </FeatureMainCard>
+          </Grid>
+
+          {/* State Management */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex" }}>
+            <FeatureMainCard
+              title="State & Data Fetching"
+              description="Efficient client-state management with Zustand and powerful server-state synchronization with TanStack Query."
+              delay={0.1}
+            >
+              <Box sx={{ position: "relative" }}>
+                <Lightning
+                  size={120}
+                  weight="duotone"
+                  color={theme.palette.warning.main}
+                  style={{ opacity: 0.8 }}
+                />
+              </Box>
+            </FeatureMainCard>
+          </Grid>
+
+          {/* Type Safety */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex" }}>
+            <FeatureMainCard
+              title="Type Safety"
+              description="End-to-end type safety with TypeScript, Zod schema validation, and React Hook Form integration."
+              delay={0.2}
+            >
+              <ShieldCheck
+                size={120}
+                weight="duotone"
+                color={theme.palette.success.main}
+                style={{ opacity: 0.8 }}
+              />
+            </FeatureMainCard>
+          </Grid>
+        </Grid>
+      </Container>
+
+      {/* Bento Grid Toolset Section */}
       <Container maxWidth="lg" sx={{ pb: 16 }}>
-        <Grid container spacing={3}>
+        <Stack spacing={2} alignItems="center" mb={8} textAlign="center">
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ letterSpacing: "-1.5px" }}
+          >
+            Everything you need
+          </Typography>
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            sx={{ maxWidth: 600 }}
+          >
+            A comprehensive suite of pre-configured tools to build
+            enterprise-grade applications specifically for you.
+          </Typography>
+        </Stack>
+
+        <Grid container spacing={3} alignItems="stretch">
           {[
             {
-              title: "Next.js 16",
+              title: "Rich Text Editor",
               description:
-                "Built on the latest stable version of Next.js with App Router and Server Actions.",
-              icon: <Lightning size={32} weight="duotone" />,
+                "Headless Tiptap editor for seamless content creation.",
+              icon: <TextAa size={32} weight="duotone" />,
             },
             {
-              title: "Material UI v6",
-              description:
-                "Beautiful, accessible, and customizable components from the world's most popular React UI framework.",
-              icon: <PaintBrush size={32} weight="duotone" />,
+              title: "Data Visualization",
+              description: "Interactive charts powered by ApexCharts.",
+              icon: <ChartBar size={32} weight="duotone" />,
             },
             {
-              title: "TypeScript",
-              description:
-                "Type-safe by default, ensuring code quality and better developer experience from day one.",
+              title: "Data Grid",
+              description: "Powerful tables with Material React Table.",
+              icon: <Table size={32} weight="duotone" />,
+            },
+            {
+              title: "Forms & Validation",
+              description: "Type-safe forms with Zod and React Hook Form.",
               icon: <ShieldCheck size={32} weight="duotone" />,
             },
+            {
+              title: "Calendar System",
+              description: "Full-featured drag-and-drop FullCalendar.",
+              icon: <Calendar size={32} weight="duotone" />,
+            },
+            {
+              title: "Maps",
+              description:
+                "SVG-based map visualizations with React Simple Maps.",
+              icon: <Globe size={32} weight="duotone" />,
+            },
           ].map((feature, index) => (
-            <Grid item xs={12} md={4} key={feature.title}>
+            <Grid
+              size={{ xs: 12, sm: 6, md: 4 }}
+              key={feature.title + index}
+              sx={{ display: "flex" }}
+            >
               <LinearCard {...feature} />
             </Grid>
           ))}
@@ -277,7 +404,7 @@ export default function Home() {
               { name: "TanStack Query", icon: <Lightning size={32} /> },
               { name: "Zustand", icon: <ShieldCheck size={32} /> },
             ].map((tech) => (
-              <Grid item xs={6} sm={3} md={2} key={tech.name}>
+              <Grid size={{ xs: 6, sm: 3, md: 2 }} key={tech.name}>
                 <Stack
                   alignItems="center"
                   spacing={2}
