@@ -103,6 +103,7 @@ export const createComponents = (mode: "light" | "dark"): Components => {
           textTransform: "capitalize",
           fontWeight: 600,
           boxShadow: "none",
+          fontSize: 14,
 
           "&[data-shape='icon']": {
             minWidth: "0px",
@@ -121,7 +122,7 @@ export const createComponents = (mode: "light" | "dark"): Components => {
           // --- size xs ---
           "&.MuiButton-sizeXs": {
             height: "30px",
-            fontSize: "11px",
+            fontSize: "11px !important",
             fontWeight: "semiBold",
             padding: "8px 14px",
             "&[data-shape='icon']": {
@@ -135,7 +136,7 @@ export const createComponents = (mode: "light" | "dark"): Components => {
           // --- size sm ---
           "&.MuiButton-sizeSm": {
             height: "36px",
-            fontSize: "14px",
+            fontSize: "14px !important",
             padding: "8px 14px",
             "&[data-shape='icon']": {
               height: "36px",
@@ -148,7 +149,7 @@ export const createComponents = (mode: "light" | "dark"): Components => {
           // --- size md ---
           "&.MuiButton-sizeMd": {
             height: "44px",
-            fontSize: "14px",
+            fontSize: "14px !important",
             padding: "10px 16px",
             "&[data-shape='icon']": {
               height: "40px",
@@ -161,7 +162,7 @@ export const createComponents = (mode: "light" | "dark"): Components => {
           // --- size lg ---
           "&.MuiButton-sizeLg": {
             height: "44px",
-            fontSize: "16px",
+            fontSize: "16px !important",
             padding: "10px 18px",
             "&[data-shape='icon']": {
               height: "44px",
