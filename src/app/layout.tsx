@@ -4,6 +4,8 @@ import TanstackProvider from "@/providers/TanstackProvider";
 import ThemeRegistry from "@/providers/ThemeRegistry";
 import "@/theme/css/colors.css";
 import "@/theme/css/globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -31,6 +33,8 @@ export default function RootLayout({
         <TanstackProvider>
           <ThemeRegistry>{children}</ThemeRegistry>
         </TanstackProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
