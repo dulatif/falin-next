@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { login } from "@/utils/next-auth";
@@ -385,47 +386,51 @@ export default function LoginPage() {
       <LeftColumn>
         <LoginIllustration />
 
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 40,
-            left: 40,
-            display: "flex",
-            alignItems: "center",
-            gap: 1.5,
-          }}
-        >
-          <Image
-            src="/falin-logo.png"
-            alt="Falin Next Logo"
-            width={28}
-            height={28}
-            style={{ borderRadius: "6px" }}
-          />
-          <Typography
-            variant="subtitle1"
+        <Link href="/">
+          <Box
             sx={{
-              fontWeight: 800,
-              letterSpacing: -0.5,
-              color: "text.primary",
+              position: "absolute",
+              bottom: 40,
+              left: 40,
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
             }}
           >
-            FALIN NEXT
-          </Typography>
-        </Box>
+            <Image
+              src="/falin-logo.png"
+              alt="Falin Next Logo"
+              width={28}
+              height={28}
+              style={{ borderRadius: "6px" }}
+            />
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: 800,
+                letterSpacing: -0.5,
+                color: "text.primary",
+              }}
+            >
+              FALIN NEXT
+            </Typography>
+          </Box>
+        </Link>
       </LeftColumn>
 
       <RightColumn>
         <FormContainer>
           <Box sx={{ mb: 6 }}>
             <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-              <Image
-                src="/falin-logo.png"
-                alt="Falin Next Logo"
-                width={64}
-                height={64}
-                style={{ borderRadius: "12px" }}
-              />
+              <Link href="/">
+                <Image
+                  src="/falin-logo.png"
+                  alt="Falin Next Logo"
+                  width={64}
+                  height={64}
+                  style={{ borderRadius: "12px" }}
+                />
+              </Link>
             </Box>
             <Typography
               variant="h4"

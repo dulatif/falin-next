@@ -11,6 +11,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import Link from "next/link";
 import {
   ArrowRight,
   Calendar,
@@ -167,34 +168,37 @@ export default function Home() {
             </Typography>
 
             <Stack direction="row" spacing={2} pt={2}>
-              <Button
-                variant="contained"
-                size="lg"
-                endIcon={<ArrowRight />}
-                sx={{
-                  borderRadius: 2,
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1rem",
-                  textTransform: "none",
-                }}
-              >
-                Get Started
-              </Button>
-              <Button
-                variant="outlined"
-                size="lg"
-                sx={{
-                  borderRadius: 2,
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1rem",
-                  textTransform: "none",
-                  borderColor: alpha(theme.palette.divider, 0.2),
-                }}
-              >
-                Documentation
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="contained"
+                  size="lg"
+                  endIcon={<ArrowRight size={20} weight="bold" />}
+                  sx={{
+                    borderRadius: 2,
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                    textTransform: "none",
+                  }}
+                >
+                  Get Started
+                </Button>
+              </Link>
+              <Link href="/design-system/dashboard">
+                <Button
+                  variant="text"
+                  size="lg"
+                  sx={{
+                    borderRadius: 2,
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1rem",
+                    textTransform: "none",
+                  }}
+                >
+                  Documentation
+                </Button>
+              </Link>
             </Stack>
 
             {/* Terminal Command */}
