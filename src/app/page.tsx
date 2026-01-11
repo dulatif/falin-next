@@ -1486,18 +1486,19 @@ export default function Home() {
                           },
                         }}
                       >
-                        <Code
-                          size={40}
-                          weight="bold"
-                          color={theme.palette.text.primary}
+                        <Box
                           sx={{
+                            display: "flex",
+                            color: theme.palette.text.primary,
                             transition: "color 0.5s",
                             ".card:hover &": { color: "white !important" },
                             "[data-theme='dark'] &": {
                               color: "white !important",
                             },
                           }}
-                        />
+                        >
+                          <Code size={40} weight="bold" color="currentColor" />
+                        </Box>
                         <Box
                           component="span"
                           sx={{
@@ -1653,16 +1654,21 @@ export default function Home() {
                           ".card:hover &": { bgcolor: "white" },
                         }}
                       >
-                        <PaintBrush
-                          size={32}
-                          weight="fill"
-                          color="white"
+                        <Box
+                          className="mui-icon"
                           sx={{
+                            display: "flex",
+                            color: "white",
                             transition: "color 0.5s",
                             ".card:hover &": { color: "#007FFF !important" },
                           }}
-                          className="mui-icon"
-                        />
+                        >
+                          <PaintBrush
+                            size={32}
+                            weight="fill"
+                            color="currentColor"
+                          />
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
@@ -1773,16 +1779,21 @@ export default function Home() {
                           ".card:hover &": { bgcolor: "white" },
                         }}
                       >
-                        <Lightning
-                          size={40}
-                          weight="fill"
-                          color="white"
+                        <Box
                           className="query-icon"
                           sx={{
+                            display: "flex",
+                            color: "white",
                             transition: "color 0.5s",
                             ".card:hover &": { color: "#FF4154 !important" },
                           }}
-                        />
+                        >
+                          <Lightning
+                            size={40}
+                            weight="fill"
+                            color="currentColor"
+                          />
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
