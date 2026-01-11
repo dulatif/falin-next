@@ -1276,7 +1276,10 @@ export default function Home() {
                       height: 200,
                       position: "relative",
                       overflow: "hidden",
-                      bgcolor: "grey.50",
+                      bgcolor:
+                        theme.palette.mode === "dark"
+                          ? "transparent"
+                          : "grey.50",
                       transition: "background-color 0.5s",
                       ".card:hover &": { bgcolor: "#3178C6" },
                     }}
@@ -1423,7 +1426,10 @@ export default function Home() {
                       height: 200,
                       position: "relative",
                       overflow: "hidden",
-                      bgcolor: "grey.50",
+                      bgcolor:
+                        theme.palette.mode === "dark"
+                          ? "transparent"
+                          : "grey.50",
                       transition: "background-color 0.5s",
                       ".card:hover &": { bgcolor: "common.black" },
                     }}
@@ -1489,12 +1495,9 @@ export default function Home() {
                         <Box
                           sx={{
                             display: "flex",
-                            color: theme.palette.text.primary,
+                            color: "common.black",
                             transition: "color 0.5s",
                             ".card:hover &": { color: "white !important" },
-                            "[data-theme='dark'] &": {
-                              color: "white !important",
-                            },
                           }}
                         >
                           <Code size={40} weight="bold" color="currentColor" />
@@ -1565,7 +1568,10 @@ export default function Home() {
                       height: 200,
                       position: "relative",
                       overflow: "hidden",
-                      bgcolor: "grey.50",
+                      bgcolor:
+                        theme.palette.mode === "dark"
+                          ? "transparent"
+                          : "grey.50",
                       transition: "background-color 0.5s",
                       ".card:hover &": { bgcolor: "#007FFF" },
                     }}
@@ -1722,7 +1728,10 @@ export default function Home() {
                       height: 200,
                       position: "relative",
                       overflow: "hidden",
-                      bgcolor: "grey.50",
+                      bgcolor:
+                        theme.palette.mode === "dark"
+                          ? "transparent"
+                          : "grey.50",
                       transition: "background-color 0.5s",
                       ".card:hover &": { bgcolor: "#FF4154" },
                     }}
