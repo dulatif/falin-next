@@ -5,19 +5,6 @@ export default function TablePage() {
   return (
     <Container sx={{ p: 4 }} maxWidth="xl">
       <Stack spacing={4}>
-        {/* Page Header */}
-        <Stack spacing={1}>
-          <Typography variant="h4" fontWeight={700} gutterBottom>
-            Table
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Tables display sets of data. They can be fully customized or powered
-            by advanced libraries like Material React Table.
-          </Typography>
-        </Stack>
-
-        <Divider />
-
         {/* Basic Table */}
         <Stack spacing={2}>
           <Typography variant="h6" fontWeight={600}>

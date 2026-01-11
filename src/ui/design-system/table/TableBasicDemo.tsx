@@ -32,7 +32,7 @@ export default function TableBasicDemo() {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+        <TableHead sx={{ bgcolor: "var(--neutral-100)" }}>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
             <TableCell align="right">Calories</TableCell>

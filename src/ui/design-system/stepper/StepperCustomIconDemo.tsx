@@ -105,7 +105,9 @@ export default function StepperCustomIconDemo() {
       >
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+            <StepLabel slots={{ stepIcon: ColorlibStepIcon }}>
+              {label}
+            </StepLabel>
           </Step>
         ))}
       </Stepper>

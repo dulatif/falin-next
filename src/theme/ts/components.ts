@@ -917,5 +917,14 @@ export const createComponents = (mode: "light" | "dark"): Components => {
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          "&.Mui-disabled": {
+            backgroundColor: "var(--neutral-200) !important",
+          },
+        },
+      },
+    },
   };
 };
