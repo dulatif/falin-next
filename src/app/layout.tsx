@@ -16,6 +16,30 @@ export const metadata: Metadata = {
   title: "Falin Next",
   description:
     "A production-ready Enterprise boilerplate for Next.js 15, Material UI v6, and TypeScript.",
+  openGraph: {
+    title: "Falin Next",
+    description:
+      "A production-ready Enterprise boilerplate for Next.js 15, Material UI v6, and TypeScript.",
+    url: "https://github.com/dulatif/falin-next",
+    siteName: "Falin Next",
+    images: [
+      {
+        url: "/falin-logo.png",
+        width: 512,
+        height: 512,
+        alt: "Falin Next Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Falin Next",
+    description:
+      "A production-ready Enterprise boilerplate for Next.js 15, Material UI v6, and TypeScript.",
+    images: ["/falin-logo.png"],
+  },
 };
 
 export default function RootLayout({
