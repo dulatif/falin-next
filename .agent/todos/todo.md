@@ -1,13 +1,13 @@
 - [] create box icon component
 - [] create pagination component
 - [] create pop up search box component like command pallete. Add shortcut ctrl + k to search
+- [] create data table using tanstack table
 
 ### inputs
 - [] filled input
 - [] autocomplete
 
 ### Extra UI
-- [] login page
 - [] dashboard layout page
 - search in shadcn example as reference
 
