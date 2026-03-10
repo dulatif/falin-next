@@ -14,8 +14,7 @@
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "preinstall": "node preinstall.js"
+    "test:coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
